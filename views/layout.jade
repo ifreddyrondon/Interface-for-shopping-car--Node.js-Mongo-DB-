@@ -40,8 +40,7 @@ html
 			//fTest('javascripts/jquery-ui-1.9.0.custom.min','js')
 			//fTest('javascripts/shopping_dragdrop','js')
 		if !sesion
-			script
-				fTest('javascripts/routingUnLogin','js')
+			script(src="javascripts/routingUnLogin.js", type="text/javascript")
 		else
 			script
 				fTest('javascripts/user_panel','js')
