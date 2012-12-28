@@ -1,0 +1,21 @@
+.parent1   { 
+  /* contenedor de la animación */
+  position:absolute;top:0px;width:200px;height: 0;z-index:100;overflow: hidden;
+  -webkit-transition-property: height;-webkit-transition-duration: 1s;-webkit-perspective: 1000px;-webkit-transform-style: preserve-3d;
+  -moz-transition-property:height;-moz-transition-duration: 1s;-moz-perspective: 1000px;-moz-transform-style: preserve-3d;
+  -o-transition-property:height;-o-transition-duration: 1s;-o-perspective: 1000px;-o-transform-style: preserve-3d;
+  transition-property: height;transition-duration: 1s;perspective: 1000px;transform-style: preserve-3d;}
+.parent2 {/* el contenido total durante la animación va aquí */}
+.parent3 {
+  /* el bloque que será animado*/
+  height: 45px;color: #fff;background: rgba(0, 0, 0, .5);
+  -webkit-transition-property: all;-webkit-transition-duration: 1s;-webkit-transform: rotateX(-90deg);-webkit-transform-origin: top;
+  -moz-transition-property: all;-moz-transition-duration: 1s;-moz-transform: rotateX(-90deg);-moz-transform-origin: top;
+  -o-transition-property: all;-o-transition-duration: 1s;-o-transform: rotateX(-90deg);-o-transform-origin: top;
+  transition-property: all;transition-duration: 1s;transform: rotateX(-90deg);transform-origin: top;}
+/* Estados hover que disparan las animaciones */
+#user_picture_img:hover .parent1 { height: 50px; }
+#user_picture_img:hover .parent3 {
+	pointer-events: auto;
+  -webkit-transform: rotateX(0deg);-moz-transform: rotateX(0deg);-o-transform: rotateX(0deg);transform: rotateX(0deg);
+  height: 111px;}

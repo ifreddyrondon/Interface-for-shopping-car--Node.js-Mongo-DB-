@@ -1,0 +1,11 @@
+input(id="ss", type="hidden", value="1")
+#user_panel_tap.tabs
+	table(width="70%", align="center")
+		tr
+			td
+				a(href="#")
+					img(id="user_panel_tap_mini", src="images/user/#{sesion.id}.micro.jpg", onerror="this.src='images/default_user_micro.png'")
+			td
+				#user_panel_cerrar_contenedor(align="right")
+					a(id="user_panel_cerrar_link", href="#", class="font")	
+						font(size="4")	X

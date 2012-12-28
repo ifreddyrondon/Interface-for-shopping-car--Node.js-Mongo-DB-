@@ -1,0 +1,96 @@
+#user_picture_info_crop_info.user_picture_info_crop
+	#user_picture_info_crop_how(class="font")
+		font(size="5")	Por favor has <br />clic y arrastra <br />sobre la imagen <br />para seleccionar <br />un área.
+	#user_picture_info_crop_error(class="font")
+		font(size="5")	Debe realizar <br /> una seleccion <br />de la imagen <br />para poder <br />guardarla!!
+#user_panel_foto_contenido	<br />
+	#user_panel_foto_titulo(class="font")	Selecciona tu imagen
+	#user_panel_foto_subir
+		form(id="imageform", enctype="multipart/form-data")
+			input(type="file", name="photoimg", id="photoimg", style="pointer-events: auto;")
+			#user_panel_foto_error_formato(class="font")	<br />	
+				font(size="5")	Formato incorrecto! solo jpg|png|jpeg|gif
+			#user_panel_foto_error_tamano(class="font")	<br />	
+				font(size="5")	Peso excedido!! tamaño maximo 2 Mb
+			#user_panel_foto_error(class="font")	<br />	
+				font(size="5")	A ocurrido un error, intentelo mas tarde
+			#user_panel_foto_opciones_upload	<br />
+				#user_panel_foto_titulo_subir(class="font")	
+					font(size="6")	Subir imagen
+				<br />	
+				.button_wrapper
+					.button_underneath.grey
+						input(type="submit", name="upload_picture", id="upload_picture", value="Subir", class="button grey")
+				<br />
+				#user_picture_loaderbar
+					img(src="images/loaderbar.gif")
+				#user_panel_show_before_picture  
+	#user_panel_foto_alt(class="font")	
+		font(size="6")	Utiliza la de:
+		table(cellpadding="10")
+			tr
+				td
+					a(href="#pic", id="user_panel_foto_facebook")
+						img(src="images/facebook.png")
+				td(class="font")
+					font(size="6")	
+						b	&Oacute;
+				td
+					a(href="#pic", id="user_panel_foto_twitter")
+						img(src="images/twitter.png")
+			tr
+				td(colspan="4")
+					#id_social_network_form
+						form(id="socialForm")
+							input(id="id_social_network", name="id_social_network", type="text")
+							input(id="id_social_network_fort", name="id_social_network_fort", type="hidden")
+							//input(type="submit", value="Subir", id="id_social_network_boton")
+							.button_wrapper#social_network_boton
+								.button_underneath
+									input(type="submit", value="Subir", id="id_social_network_boton", class="button")
+				td
+					.login_contenedor_loader(style="padding-left:50px")
+						img(src="images/loader.gif")
+		<br />
+		#user_panel_foto_error_vacio(class="font")
+			font(size="5")	Por favor complete los datos!
+		#user_panel_foto_error_bad(class="font_18")	
+			font(size="5")	A ocurrido un error, intentelo <br />mas tarde o pruebe con otro <br />id de facebook / usuario de twitter
+	#user_panel_foto_after_upload
+	input(id="user_panel_foto_upload_src", type="hidden", value="images/user/#{sesion.id}")
+#user_picture_save(class="font_w", align="center")	
+	font(size="5")	
+		u	Men&uacute
+	.login_contenedor_loader(align="center")
+		img(src="images/loader.gif")
+	form(id="imageform_coor")
+		input(type="hidden", name="x1", value="", class="x1")
+		input(type="hidden", name="y1", value="", class="y1")
+		input(type="hidden", name="x2", value="", class="x2")
+		input(type="hidden", name="y2", value="", class="y2")
+		input(type="hidden", name="w", value="", class="w")
+		input(type="hidden", name="h", value="", class="h")
+		input(type="hidden", name="w_resize", value="", class="w_resize")
+		input(type="hidden", name="h_resize", value="", class="h_resize")
+		<br />
+		table
+			tr
+				td
+					.button_wrapper
+						.button_underneath
+							input(type="submit", value="Guardar", id="save_thumb", class="button")
+			tr
+				td
+					.button_wrapper
+						.button_underneath
+							input(type="submit", value="Eliminar", id="delete_thumb", class="button")
+			tr
+				td
+					.button_wrapper
+						.button_underneath
+							input(type="submit", value="Default", id="default_thumb", class="button")
+	#user_picture_error_upload(class="font")	
+		font(size="5")	A ocurrido <br> un error, intentelo mas tarde
+#user_panel_picture_atras(class="font_w")
+	a(id="user_panel_picture_atras_link", href="#")	
+		font(size="5")	Devolver!!

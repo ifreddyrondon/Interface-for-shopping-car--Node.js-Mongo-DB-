@@ -1,0 +1,24 @@
+#login.user_container
+	#container_user_panel
+		#user_picture_img_tmp
+		#user_picture_img(align="center")
+			img(id="user_picture_img_imagen", src="images/user/#{sesion.id}.avatar.jpg", onerror="this.src='images/default_user_avatar.png'")
+			.parent1
+				.parent2
+					.parent3	<br />
+						a(id="user_picture_link", href="#pic", class="font_w")	cambiar foto!
+		#user_panel_contenido
+			if sesion.tipo == 'a'
+				include admin/view_admin			
+			if sesion.tipo == 'p'
+				include proveedor/view_proveedor			
+			if sesion.tipo == 'u'
+				include usuario/view_user			
+		.login_contenedor_loader(align="center")
+			img(src="images/loader.gif")
+		a(href="/logout", id="logout")
+			img(src="images/logout.png")
+	include index_comunes/index_img
+		#user_panel_picture_atras
+	include index_comunes/index_datos
+	

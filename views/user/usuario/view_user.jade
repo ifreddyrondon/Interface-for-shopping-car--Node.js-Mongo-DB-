@@ -1,0 +1,36 @@
+div(align="center")	
+	font(size="4", class="font")	Bienvendio 
+	font(size="3", class="font_w") #{sesion.user}
+.user_menu_contenedor(align="center")	
+	.datos
+		a(href="#datos/#{sesion.id}")
+			table(cellspacing="15")
+				tr
+					td
+						img(src="images/datos.png")
+					td(valign="middle", class="font")	
+						font(size="3", class="font_w") Mis Datos
+	.carrito
+		a(href="#carrito?id")
+			table(cellspacing="15")
+				tr
+					td
+						img(src="images/shopping_cart.png")
+					td(valign="middle", class="font")	
+						font(size="3", class="font_w") Carrito
+	.historia_compras
+		a(href="#historial_user?id")
+			table(cellspacing="15")
+				tr
+					td
+						img(src="images/historial_user.png")
+					td(valign="middle", class="font")	
+						font(size="3", class="font_w") Historial
+	.support
+		a(href="#support?id")
+			table(cellspacing="15")
+				tr
+					td
+						img(src="images/support.png")
+					td(valign="middle", class="font")	
+						font(size="3", class="font_w") Soporte

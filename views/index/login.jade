@@ -1,0 +1,33 @@
+#login.user_container
+	#login_data
+		#login_contenido(align="center")
+				<br /><br /><br /><br /><br />
+				form(id="form-login")
+					input(id="login_user", name="login_user", class="campos", type="text", value="Usuario o correo", alt="Debe poner su usuario o correo")
+					input(id="login_pass_temp", name="login_pass_temp", class="campos campos_border", type="text", value="Contraseña", alt="Contraseña/clave ligada al nombre de usuario")
+					input(id="login_pass", name="login_pass", class="campos campos_border", type="password", alt="Contraseña/clave ligada al nombre de usuario")
+					#login_recordar_datos	<br />	Recordar mis datos
+					.onoffswitch
+						input(type="checkbox", name="onoffswitch", class="onoffswitch-checkbox", id="myonoffswitch", checked)
+						label(class="onoffswitch-label", for="myonoffswitch")                      
+							.onoffswitch-inner
+								.onoffswitch-active	ON
+								.onoffswitch-inactive	OFF           
+							.onoffswitch-switch
+					<br />
+					.button_wrapper
+						.button_underneath
+							input(id="login_enviar", type="submit", value="Entrar", class="button")
+						<br />
+					<br />
+			#login_forget(align="right")
+				a(href="#", class="font_w")
+					font(size="4")	Olvidaste tus datos?
+		<br />
+		#login_error.font_error	
+			font(size="4")	Debe ingresar user/correo y contraseña
+		.login_contenedor_loader(align="center")
+			img(src="images/loader.gif")
+		#login_error_datos.font_error	
+			font(size="4")	user/correo o contraseña incorrectos!!
+	#user_panel_picture_atras

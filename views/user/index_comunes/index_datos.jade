@@ -1,0 +1,58 @@
+#datos(align="center", class="font_w")
+	font(size="6")	Mis Datos
+	#btn_update.user_picture_info_crop(style="left: 0px; position: absolute")
+		#update_datos.button_wrapper
+			.button_underneath.button_underneath_2
+				a(href="#user/datos/update/#{sesion.id}", class="button", style="width: 118px") Actualizar datos
+		#update_regresar.button_wrapper
+			.button_underneath.button_underneath_2
+				a(href="#datos/#{sesion.id}", class="button", style="width: 118px") Regresar
+		.button_wrapper
+			.button_underneath.button_underneath_2
+				a(href="#datos/pass", class="button", style="width: 117px") Cambiar Clave
+	#datos_container
+	#datosUpdate_container
+		form(id="form-update")
+			<br />
+			div
+				table
+					tr
+						td(class="font")
+							font(size="6")	Personales
+					tr
+						td	Nombre
+						td
+							input(id="update_nombre", name="update_nombre", type="text", value="", class="campos2")
+					tr
+						td	Email
+						td
+							input(id="update_correo", name="update_correo", type="text", value="", class="campos2")
+					tr
+						td	Telefono
+						td
+							input(id="update_phone", name="update_phone", type="text", value="", class="campos2")
+					tr
+						td(class="font")
+							font(size="6")	Direccion
+					tr
+						td	Estado
+						td
+							input(id="update_estado", name="update_estado", type="text", value="", class="campos2")
+					tr
+						td	Ciudad
+						td
+							input(id="update_ciudad", name="update_ciudad", type="text", value="", class="campos2")
+					tr
+						td	Codigo Postal
+						td
+							input(id="update_postal", name="update_postal", type="text", value="", class="campos2")
+					tr
+						td	Direccion
+						td
+							textarea(id="update_direccion", name="update_direccion", rows="4", cols="28")
+			<br />
+			.button_wrapper
+				.button_underneath
+					input(id="btn_update_enviar", type="submit", value="Actualizar", class="button")
+		<br /><br /><br /><br /><br />
+		#registrar_error.font_error	Debe completar los datos requeridos

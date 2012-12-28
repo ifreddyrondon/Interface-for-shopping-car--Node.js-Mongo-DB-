@@ -1,0 +1,36 @@
+#registrar.user_container	
+	#registrar_contenido(align="center")	<br />
+		#user_ini.font_w
+			a(class="registrar_usuario", href="#usuario")
+				font(size="4")	REGISTRAR USUARIO
+		#prov_fin.font_w
+			a(class="registrar_proveedor", href="#proveedor")
+				font(size="4")	REGISTRAR PROVEEDOR
+		#registrar_relleno_formulario	<br /><br />
+			form(id="form-reg")
+				div
+					input(id="registrar_user", name="registrar_user", type="text", value="Usuario", class="campos")
+					input(id="registrar_nombre", name="registrar_nombre", type="text", value="Nombre completo", class="campos campos_border")
+					input(id="registrar_correo", name="registrar_correo", type="text", value="E-mail", class="campos campos_border")
+					input(id="registrar_phone", name="registrar_phone", type="text", value="Telefono", class="campos campos_border")
+					input(id="registrar_documento", name="registrar_documento", type="text", value="RIF", class="campos campos_border")
+					input(id="registrar_pass_temp", name="registrar_pass_temp", type="text", value="Contraseña", class="campos campos_border")
+					input(id="registrar_pass", name="registrar_pass", type="password", class="campos campos_border")	
+					.button_wrapper	<br />
+						.button_underneath	
+							input(id="registrar_enviar", type="submit", value="Registrate!", class="button")
+			<br /><br /><br /><br /><br />
+		#user_fin.font_w
+			a(class="registrar_usuario", href="#usuario")
+				font(size="4")	REGISTRAR USUARIO
+		#prov_ini.font_w
+			a(class="registrar_proveedor", href="#proveedor")
+				font(size="4")	REGISTRAR PROVEEDOR
+	<br /><br />
+	#registrar_error.font_error	Debe completar los datos requeridos
+	#registrar_error_procesamiento.font_error	A ocurrido un error intentalo mas tarde
+	#registrar_success.font_error	Felicidades!! Estas a un paso de entrar a nuestra comunidad, hemos enviado un email a la dirección que acabas de registrar con los pasos para completar tu registro...
+	.beforeSend_loader(align="center")
+		img(src="images/loader.gif")
+	#registrar_mail_error.font_error	Hubo un error al enviar el email para terminar su registro	<br /><br />
+		a(id="registrar_reintentar_mail", href="#")	Quieres reintentar el envio?
