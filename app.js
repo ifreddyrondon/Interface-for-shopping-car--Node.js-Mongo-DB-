@@ -5,6 +5,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
+  , gzippo = require('gzippo')
   , user = require('./routes/user')
   , disponibilidad = require('./routes/disponibilidad')
 
@@ -24,7 +25,8 @@ app.configure(function(){
   app.use(express.cookieParser('keyboard cat'));
 	app.use(express.session());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
+  //app.use(express.static(path.join(__dirname, 'public')));
+  app.use(gzippo.staticGzip(__dirname + '/public'));
 });
 
 app.configure('development', function(){
