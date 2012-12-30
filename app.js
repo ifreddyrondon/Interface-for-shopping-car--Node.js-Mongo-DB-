@@ -47,6 +47,7 @@ app.post('/pictures/default', user.pictureDefault);
 app.post('/datos', user.datos);
 app.post('/user/datos', user.datosUpdate);
 app.post('/user/datos/update', user.update);
+app.post('/user/datos/pass', user.pass);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

@@ -451,3 +451,10 @@ exports.update = function(req, res){
 		});
 	}
 };
+exports.pass = function(req, res){
+	if (req.session.user){
+		console.log(req.body.old_pass_temp);
+		console.log(req.body.new_pass_temp);
+		console.log(req.body.repeat_new_pass_temp);
+	}
+};

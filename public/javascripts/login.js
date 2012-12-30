@@ -44,7 +44,7 @@ $(document).ready(function() {
 	$("#login_pass").blur(function(){
 		if ($("#login_pass").val()==''){
 			$("#login_pass").hide();
-        	$("#login_pass_temp").show();    	
+      $("#login_pass_temp").show();    	
 			$("#login_pass_temp").val('Contraseña');
 			$("#login_pass_temp").css('color','#000000');			
 		} 			

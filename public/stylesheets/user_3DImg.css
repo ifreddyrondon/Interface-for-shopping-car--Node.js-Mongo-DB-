@@ -33,8 +33,9 @@
 	right:0px;
 	top:300px;
 	display:none;}
-#datos_container{top: 18px;left: 300px;position: absolute;}
-#shopping_menu, #user_panel_show_before_picture, #user_panel_foto_after_upload, #user_picture_info_crop_error, #user_panel_foto_error_vacio, #user_panel_foto_error_bad, #user_panel_foto_opciones_upload, #user_panel_foto_error_formato, #user_panel_foto_error_tamano, #user_panel_foto_error, #id_social_network_form, #user_panel_tap_titulo, #datos, #user_picture_info_crop_info, #registrar_error{	display:none	}
+#datos_container{top:20px;left:340px;position:absolute;border: #000000}
+#datos_pass_size{width: 250px}
+#shopping_menu, #user_panel_show_before_picture, #user_panel_foto_after_upload, #user_picture_info_crop_error, #user_panel_foto_error_vacio, #user_panel_foto_error_bad, #user_panel_foto_opciones_upload, #user_panel_foto_error_formato, #user_panel_foto_error_tamano, #user_panel_foto_error, #id_social_network_form, #user_panel_tap_titulo, #datos, #user_picture_info_crop_info, #registrar_error, #datos_pass, #new_pass_temp, #repeat_new_pass_temp, #old_pass_temp, .error_clave, .error_clave_faltan{display:none}
 /*---3D Efecto over img-----*/
 .parent1 { position:absolute;top:0px;width:200px;height: 0;z-index:100;overflow: hidden;
   -webkit-transition-property: height;-webkit-transition-duration: 1s;-webkit-perspective: 1000px;-webkit-transform-style: preserve-3d;-moz-transition-property:height;-moz-transition-duration: 1s;-moz-perspective: 1000px;-moz-transform-style: preserve-3d;-o-transition-property:height;-o-transition-duration: 1s;-o-perspective: 1000px;-o-transform-style: preserve-3d;transition-property: height;transition-duration: 1s;perspective: 1000px;transform-style: preserve-3d;}

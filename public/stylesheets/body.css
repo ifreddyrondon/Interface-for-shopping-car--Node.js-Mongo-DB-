@@ -26,23 +26,10 @@ li { list-style: none }
 	overflow:hidden;
 	float:left;	}
 .contenido table{	text-align: center	}
-.font_w{
-	color: rgba(255,255,255,0.91);
-	font-weight:100;
-	font-family: monospace;
-	text-shadow:11px 19px 54px rgba(101,101,101,0.2);	}
-.font{
-	color: #000000;
-	text-shadow:0px 1px 0px rgba(101,101,101,0.6);
-	font-family: monospace;
-	font-weight: bold;	}
-.font_error{
-	color: #000000;
-  text-shadow:0px 1px 0px rgba(101,101,101,0.6);
-	font-family: monospace;
-	background: rgba(255,255,255,1);
-	font-weight: bold;
-	text-align: center;	}
+.font_w{color: rgba(255,255,255,0.91);font-weight:100;font-family: monospace;text-shadow:11px 19px 54px rgba(101,101,101,0.2);	}
+.font{color: #000000;text-shadow:0px 1px 0px rgba(101,101,101,0.6);font-family: monospace;font-weight: bold;	}
+.font_error{color: #000000;text-shadow:0px 1px 0px rgba(101,101,101,0.6);font-family: monospace;background: rgba(255,255,255,1);font-weight: bold;text-align: center;	}
+.titulo{font-family:BebasRegular;font-size: 40px;letter-spacing:5px;}
 /*------DESTACADO-------------------------*/
 #destacado{
 	position:fixed;

@@ -269,3 +269,5 @@ $('#id_social_network').corner("left, 10px");
 $('#destacado_menu').corner("4px");
 //Update
 $('.campos2').corner("7px");
+$('#old_pass').corner("top, 7px");$('#old_pass_temp').corner("top, 7px");
+$('#repeat_new_pass').corner("bottom, 7px");$('#repeat_new_pass_temp').corner("bottom, 7px");

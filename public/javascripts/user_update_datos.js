@@ -70,4 +70,79 @@ $(document).ready(function() {
 		var expresion = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 		return expresion.test(correo);
 	}
+	$("#old_pass").keypress(function(){
+		$("#old_pass").hide();
+    $("#old_pass_temp").show();
+    $("#old_pass_temp").focus();
+    $("#old_pass").val('');		
+	});
+	$("#old_pass_temp").blur(function(){
+		if ($("#old_pass_temp").val()==''){
+			$("#old_pass_temp").hide();
+      $("#old_pass").show();    	
+			$("#old_pass").val('Clave');
+		} 			
+		if ($("#old_pass_temp").val().length < 6){
+			$(".error_clave").show();    			
+		}
+	});
+	$("#new_pass").keypress(function(){
+		$("#new_pass").hide();
+    $("#new_pass_temp").show();
+    $("#new_pass_temp").focus();
+    $("#new_pass").val('');		
+	});
+	$("#new_pass_temp").blur(function(){
+		if ($("#new_pass_temp").val()==''){
+			$("#new_pass_temp").hide();
+      $("#new_pass").show();    	
+			$("#new_pass").val('Nueva clave');
+		} 			
+		if ($("#new_pass_temp").val().length < 6){
+			$(".error_clave").show();    			
+		}
+	});
+	$("#repeat_new_pass").keypress(function(){
+		$("#repeat_new_pass").hide();
+    $("#repeat_new_pass_temp").show();
+    $("#repeat_new_pass_temp").focus();
+    $("#repeat_new_pass").val('');		
+	});
+	$("#repeat_new_pass_temp").blur(function(){
+		if ($("#repeat_new_pass_temp").val()==''){
+			$("#repeat_new_pass_temp").hide();
+      $("#repeat_new_pass").show();    	
+			$("#repeat_new_pass").val('Repita la clave');
+		} 			
+		if ($("#repeat_new_pass_temp").val().length < 6){
+			$(".error_clave").show();    			
+		}
+	});
+	$("#btn_update_pass").click(function(){
+		if($("#old_pass").val()=='Clave' || $("#new_pass").val()=='Nueva clave' || $("#repeat_new_pass").val()=='Repita la clave'){
+			$(".error_clave").hide();    			
+			$(".error_clave_faltan").show();	
+			return false;
+		}
+		else {
+			$(".error_clave").hide();    			
+			$(".error_clave_faltan").hide();	
+			$("#form-pass").ajaxForm({
+				type: "POST",
+				url: "/user/datos/pass",
+				beforeSend: function(){
+					 	$("#login_contenedor_loader").show();
+				},
+				success: function(datos){
+					$("#login_contenedor_loader").hide();
+		      if(datos == '1'){
+			    	alert("PROBLEMA");
+		      }
+		      else {
+		      	window.location = datos;
+		      }
+				}
+			});
+		}
+	});
 });
