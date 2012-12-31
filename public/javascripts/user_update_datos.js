@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	fTest('javascripts/jquery.tipTip.minified','js');
+	fTest('javascripts/cryptico/sha512','js');
 	var correo_disponibilidad = 0;
 	$("#update_correo").focus(function(){
 		var correo_old = $("#update_correo").val();
@@ -84,6 +85,7 @@ $(document).ready(function() {
 		} 			
 		if ($("#old_pass_temp").val().length < 6){
 			$(".error_clave").show();    			
+			$("#old_pass").val('Clave');
 		}
 	});
 	$("#new_pass").keypress(function(){
@@ -100,6 +102,7 @@ $(document).ready(function() {
 		} 			
 		if ($("#new_pass_temp").val().length < 6){
 			$(".error_clave").show();    			
+			$("#new_pass").val('Nueva clave');
 		}
 	});
 	$("#repeat_new_pass").keypress(function(){
@@ -116,6 +119,7 @@ $(document).ready(function() {
 		} 			
 		if ($("#repeat_new_pass_temp").val().length < 6){
 			$(".error_clave").show();    			
+			$("#repeat_new_pass").val('Repita la clave');
 		}
 	});
 	$("#btn_update_pass").click(function(){
@@ -124,9 +128,18 @@ $(document).ready(function() {
 			$(".error_clave_faltan").show();	
 			return false;
 		}
+		else if($("#new_pass_temp").val()!=$("#repeat_new_pass_temp").val()){
+			$(".error_clave_faltan").hide();	
+			$(".error_clave_coinciden").show(); 
+			return false;
+		}	
 		else {
 			$(".error_clave").hide();    			
-			$(".error_clave_faltan").hide();	
+			$(".error_clave_faltan").hide();
+			$(".error_clave_coinciden").hide(); 	
+			$("#old_pass_temp").val(CryptoJS.SHA512($('#old_pass_temp').val()));
+			$("#new_pass_temp").val(CryptoJS.SHA512($('#new_pass_temp').val()));
+			$("#repeat_new_pass_temp").val(CryptoJS.SHA512($('#repeat_new_pass_temp').val()));
 			$("#form-pass").ajaxForm({
 				type: "POST",
 				url: "/user/datos/pass",
@@ -136,7 +149,13 @@ $(document).ready(function() {
 				success: function(datos){
 					$("#login_contenedor_loader").hide();
 		      if(datos == '1'){
-			    	alert("PROBLEMA");
+			    	$(".error_clave_error").show(); 
+		      }
+		      if(datos == '2'){
+			    	$(".error_clave_incorrecta").show(); 
+		      }
+		      if(datos == '3'){
+			    	$(".error_clave_coinciden").show(); 
 		      }
 		      else {
 		      	window.location = datos;

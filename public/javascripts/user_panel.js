@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$("#user_panel_tap").css("display","block");
 	$("#user_panel_tap").css("right","135px");
 	routie({
-		'': function(){
+		'*': function(){
 			$(".user_container").css("width","235px");
 			$(".contenido").css("width",pageWindow.width()-494);
 			$(".contenido").css("left","0px");		

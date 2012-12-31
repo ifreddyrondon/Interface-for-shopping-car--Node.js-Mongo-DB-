@@ -453,8 +453,45 @@ exports.update = function(req, res){
 };
 exports.pass = function(req, res){
 	if (req.session.user){
-		console.log(req.body.old_pass_temp);
-		console.log(req.body.new_pass_temp);
-		console.log(req.body.repeat_new_pass_temp);
+		pass_old= crypto.createHash('sha256').update(req.body.old_pass_temp).digest("hex");
+		pass_old= pass_old.substr(0,1)+"u"+pass_old.substr(2,pass_old.length/2)+"se"+pass_old.substr(pass_old.length/2)+"r";
+		objBD = BD.BD();
+		objBD.connect();
+		objBD.query("SELECT Clave FROM persona WHERE ID_Persona = "+ req.session.user.id +"",
+			function(err, rows, fields) {  	
+				if (err){
+					console.log(err);
+					res.write('1');
+					res.end();
+				}
+				else{
+					if(rows[0]['Clave']==pass_old){
+						if(req.body.new_pass_temp == req.body.repeat_new_pass_temp){
+							pass_new= crypto.createHash('sha256').update(req.body.new_pass_temp).digest("hex");
+							pass_new= pass_new.substr(0,1)+"u"+pass_new.substr(2,pass_new.length/2)+"se"+pass_new.substr(pass_new.length/2)+"r";
+							objBD.query("UPDATE persona SET Clave = "+objBD.escape(pass_new)+" WHERE ID_Persona = "+ req.session.user.id +"", 
+								function(err2, rows2, fields2) {  	
+									if (err2){
+										console.log(err2);
+										res.write('1');
+										res.end();
+									}
+									else{
+										res.write('/#datos/'+datos.id+'');
+										res.end();
+									}
+							});
+						}
+						else{
+							res.write('3');
+							res.end();
+						}
+					}
+					else{
+						res.write('2');
+						res.end();
+					}
+				}
+		});
 	}
 };

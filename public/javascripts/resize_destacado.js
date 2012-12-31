@@ -24,6 +24,7 @@ $(window).load(function(){
 		sizePicture();	
     }).trigger("resize");
 });
+//----DESTACADO-------------//
 $(document).ready(function() {
 	var women = $("#women");var men = $("#men");var children = $("#children");
 	$("#start").click(function(){
@@ -49,7 +50,6 @@ $(document).ready(function() {
 			$("#start").css("color","#ffffff");		
 		}	
 	});
-	
 	women.click(function(){
 		women.css("font-weight","bold");
 		men.css("font-weight","100");
@@ -73,7 +73,6 @@ $(document).ready(function() {
 			women.css("color","#ffffff");		
 		}
 	});
-	
 	men.click(function(){
 		men.css("font-weight","bold");
 		women.css("font-weight","100");
@@ -97,7 +96,6 @@ $(document).ready(function() {
 			men.css("color","#ffffff");		
 		}
 	});
-	
 	children.click(function(){
 		children.css("font-weight","bold");
 		women.css("font-weight","100");
@@ -120,5 +118,43 @@ $(document).ready(function() {
 		if ($("#children_menu").css("display") == "none"){
 			children.css("color","#ffffff");		
 		}
+	});
+});
+//----Drag&Drop------//
+$(function () {
+	$(".ropa_float").draggable({
+		revert:true,
+		drag:function () {
+			$(this).addClass("active");
+			$(this).closest("#product").addClass("active");
+		},
+		stop:function () {
+			$(this).removeClass("active").closest("#product").removeClass("active");
+			}
+	});
+	$(".basket").droppable({
+		activeClass:"active",
+		hoverClass:"hover",
+		tolerance:"touch",
+		drop:function (event, ui) {	
+			var basket = $(this),
+			move = ui.draggable,
+			itemId = basket.find("[data-id='" + move.attr("data-id") + "']");
+			if (itemId.html() != null)
+				itemId.find("input").val(parseInt(itemId.find("input").val()) + 1);
+			else {
+				addBasket(basket, move);
+				move.find("input").val(parseInt(move.find("input").val()) + 1);
+			}
+		}
+	});
+	function addBasket(basket, move) {
+		basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
+			+ '<span class="name">' + move.find("span").html() + '</span>'
+			+ '<input class="count" value="1" type="text">'
+			+ '<button class="delete">&#10005;</button>');
+	}
+	$(".basket ul li button.delete").live("click", function () {
+		$(this).closest("li").remove();
 	});
 });
