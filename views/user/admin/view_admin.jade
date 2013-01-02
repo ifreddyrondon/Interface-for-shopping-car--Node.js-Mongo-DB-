@@ -1,1 +1,20 @@
-div hola admins
+div(align="center")	
+	font(size="4", class="font")	Bienvendio 
+	font(size="3", class="font_w") #{sesion.user}
+.user_menu_contenedor(align="center")	
+	.datos
+		a(href="#datos/#{sesion.id}")
+			table(cellspacing="15")
+				tr
+					td
+						img(src="images/datos.png")
+					td(valign="middle", class="font")	
+						font(size="3", class="font_w") Mis Datos
+	.support
+		a(href="#support?id")
+			table(cellspacing="15")
+				tr
+					td
+						img(src="images/support.png")
+					td(valign="middle", class="font")	
+						font(size="3", class="font_w") Soporte

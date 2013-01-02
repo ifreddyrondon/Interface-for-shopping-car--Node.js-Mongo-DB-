@@ -525,8 +525,8 @@
             }
             
             // store current state
-            currentState = target;
-            activeStep = el;
+            //currentState = target;
+            //activeStep = el;
             
             // And here is where we trigger `impress:stepenter` event.
             // We simply set up a timeout to fire it taking transition duration (and possible delay) into account.

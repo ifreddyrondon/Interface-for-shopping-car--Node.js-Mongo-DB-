@@ -3,7 +3,6 @@ $(document).ready(function(){
 	$(".user_container").css("width","235px");
 	routie({
 		'login': function() {
-			fTest('javascripts/login','js');
 			$("#login").show();
 			$("#login_tap_abrir").hide();
 			$("#login_cerrar_contenedor").show();
@@ -16,7 +15,6 @@ $(document).ready(function(){
 			$("#registrar_tap").css("right","258px");	
 		},
 		'registrar': function() {
-	    fTest('javascripts/registrar','js');
 			$("#registrar").show();
 			$("#login").hide();
 			$("#registrar_tap_abrir").hide();

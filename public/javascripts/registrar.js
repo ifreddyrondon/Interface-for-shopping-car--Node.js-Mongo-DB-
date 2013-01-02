@@ -1,6 +1,3 @@
-fTest('javascripts/jquery.tipTip.minified','js');
-fTest('javascripts/cryptico/sha512','js');
-
 var pageWindow = $(window);
 var user_disponibilidad = 0;
 var correo_disponibilidad = 0;

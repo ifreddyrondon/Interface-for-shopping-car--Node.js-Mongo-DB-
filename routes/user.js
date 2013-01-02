@@ -139,7 +139,7 @@ exports.login = function(req, res){
 		        				req.session.regenerate(function(){
 			        				req.session.user = user;
 			        				console.log(req.session.user);
-			        				res.redirect('/');
+			        				res.redirect('/#');
 			        			});
 					    		}
 					    	});
@@ -159,7 +159,7 @@ exports.login = function(req, res){
         				req.session.regenerate(function(){
 	        				req.session.user = user;
 	        				console.log(req.session.user);
-	        				res.redirect('/');
+	        				res.redirect('/#');
 	        			});
 						  }  
 					  });
@@ -177,7 +177,7 @@ exports.login = function(req, res){
         				req.session.regenerate(function(){
 	        				req.session.user = user;
 	        				console.log(req.session.user);
-	        				res.redirect('/');
+	        				res.redirect('/#');
 	        			});
 						  }  
 					  });

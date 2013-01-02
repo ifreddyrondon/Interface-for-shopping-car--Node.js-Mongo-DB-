@@ -1,8 +1,6 @@
 var pageWindow = $(window);
 $(document).ready(function() {
-	fTest('javascripts/jquery.imgareaselect.pack','js');	
-	fTest('stylesheets/jquery.imgareaselect-0.9.8/css/imgareaselect-animated','css');	
-	
+	head.js("javascripts/jquery.imgareaselect.pack.js","stylesheets/jquery.imgareaselect-0.9.8/css/imgareaselect-animated.css");	
 	$('#photoimg').live('change', function(){ 
 		var ext = $('#photoimg').val().split('.').pop().toLowerCase(); 	
 		if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){  

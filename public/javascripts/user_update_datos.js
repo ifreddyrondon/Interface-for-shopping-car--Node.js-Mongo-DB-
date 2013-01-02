@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	fTest('javascripts/jquery.tipTip.minified','js');
-	fTest('javascripts/cryptico/sha512','js');
+	head.js("javascripts/cryptico/sha512.js","javascripts/jquery.tipTip.minified.js");
 	var correo_disponibilidad = 0;
 	$("#update_correo").focus(function(){
 		var correo_old = $("#update_correo").val();

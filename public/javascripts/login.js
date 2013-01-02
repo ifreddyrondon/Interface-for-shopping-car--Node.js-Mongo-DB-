@@ -1,7 +1,5 @@
-fTest('javascripts/cryptico/sha512','js');
 var pageWindow = $(window);
 $(document).ready(function() {
-	
 	//inputs
 	$("#login_user").focus(function(){
 		if($("#login_user").val()=='Usuario o correo')	{
