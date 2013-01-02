@@ -5,12 +5,16 @@ $(document).ready(function() {
 	$("#user_panel_tap").css("right","135px");
 	routie({
 		'/*': function(){
+			$(".big_container").hide();
 			$(".user_container").css("width","235px");
+			$("#user_panel_contenido").show();
 			$(".contenido").css("width",pageWindow.width()-494);
 			$(".contenido").css("left","0px");		
 		},
 		'': function(){
+			$(".big_container").hide();
 			$(".user_container").css("width","235px");
+			$("#user_panel_contenido").show();
 			$(".contenido").css("width",pageWindow.width()-494);
 			$(".contenido").css("left","0px");		
 		},
@@ -118,12 +122,14 @@ $(document).ready(function() {
 	//FOTO	
 	$("#user_panel_picture_atras_link").click(function(event){
 		if ($("#user_picture_save").css("display") == "none"){
-			$(".big_container").hide();
-			event.preventDefault();
-			history.back(1);
+			//event.preventDefault();
+			//history.back(-1);
 			//parent.history.back();
       //return false;
       //location.href = document.referrer;
+      history.back();
+      //location.refresh();
+		  return false;
 		}
 		else {
 			$('#user_panel_foto_upload').imgAreaSelect({remove: true});
@@ -148,6 +154,7 @@ $(document).ready(function() {
 	});
 	function hideUserPanel(){
 		$(".user_container").css("width",pageWindow.width()-90);
+		$(".big_container").show();
 		$("#logout").hide();
 		$("#user_panel_contenido").hide();
 		$('#login').corner("left, 8px");
