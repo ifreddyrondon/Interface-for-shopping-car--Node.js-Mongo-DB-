@@ -5,18 +5,10 @@ $(document).ready(function() {
 	$("#user_panel_tap").css("right","135px");
 	routie({
 		'/*': function(){
-			$(".big_container").hide();
-			$(".user_container").css("width","235px");
-			$("#user_panel_contenido").show();
-			$(".contenido").css("width",pageWindow.width()-494);
-			$(".contenido").css("left","0px");		
+			showMenuPpal();
 		},
 		'': function(){
-			$(".big_container").hide();
-			$(".user_container").css("width","235px");
-			$("#user_panel_contenido").show();
-			$(".contenido").css("width",pageWindow.width()-494);
-			$(".contenido").css("left","0px");		
+			showMenuPpal();
 		},
 		'pic': function() {
 			picIzq();
@@ -24,8 +16,13 @@ $(document).ready(function() {
 			$("#user_panel_foto_alt").show();
 			$("#user_panel_foto_subir").show();
 			$(".customfile").css("width",pageWindow.width()-500);
-			$("#user_panel_foto_contenido").css("width",pageWindow.width()-400);		
-			hideUserPanel();
+			$("#user_panel_foto_contenido").css("width",pageWindow.width()-400);
+			$(".user_container").css("width",pageWindow.width()-90);
+			$("#logout").hide();
+			$("#user_panel_contenido").hide();
+			$('#login').corner("left, 8px");
+			$("#user_panel_picture_atras").show();
+			$(".big_container").hide();		
 			$('#photoimg').customFileInput();
 		},
 		'datos/:id': function(id){
@@ -122,13 +119,7 @@ $(document).ready(function() {
 	//FOTO	
 	$("#user_panel_picture_atras_link").click(function(event){
 		if ($("#user_picture_save").css("display") == "none"){
-			//event.preventDefault();
-			//history.back(-1);
-			//parent.history.back();
-      //return false;
-      //location.href = document.referrer;
       history.back();
-      //location.refresh();
 		  return false;
 		}
 		else {
@@ -152,16 +143,27 @@ $(document).ready(function() {
 		$("#user_panel_tap").css("right","40px");
 		$("#user_panel_cerrar_contenedor").hide();
 	});
+	function showMenuPpal(){
+		$(".big_container").hide();
+		$(".user_container").css("width","235px");
+		$("#user_panel_contenido").show();
+		$("#user_panel_picture_atras").hide();
+		$("#logout").show();
+		$(".contenido").css("width",pageWindow.width()-494);
+		$(".contenido").css("left","0px");		
+	}
 	function hideUserPanel(){
 		$(".user_container").css("width",pageWindow.width()-90);
+		$("#user_panel_foto_contenido").hide();
+		$("#user_panel_foto_alt").hide();
+		$("#user_panel_foto_subir").hide();
 		$(".big_container").show();
 		$("#logout").hide();
 		$("#user_panel_contenido").hide();
 		$('#login').corner("left, 8px");
-		$("#user_picture_link").hide();
 		$("#user_panel_picture_atras").show();
 	}
-	function picIzq(){
+	var picIzq = function picIzq(){
 		$("#user_picture_img").css("position","absolute");
 		$("#user_picture_img").css("left","18px");
 		$("#user_picture_img").css("top","20px");

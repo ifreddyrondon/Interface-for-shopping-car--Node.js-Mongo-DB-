@@ -19,8 +19,8 @@
 					font(size="6")	Subir imagen
 				<br />	
 				.button_wrapper
-					.button_underneath.grey
-						input(type="submit", name="upload_picture", id="upload_picture", value="Subir", class="button grey")
+					.button_underneath
+						input(type="submit", name="upload_picture", id="upload_picture", value="Subir", class="button")
 				<br />
 				#user_picture_loaderbar
 					img(src="images/loaderbar.gif")
@@ -42,12 +42,15 @@
 				td(colspan="4")
 					#id_social_network_form
 						form(id="socialForm")
-							input(id="id_social_network", name="id_social_network", type="text")
-							input(id="id_social_network_fort", name="id_social_network_fort", type="hidden")
-							//input(type="submit", value="Subir", id="id_social_network_boton")
-							.button_wrapper#social_network_boton
-								.button_underneath
-									input(type="submit", value="Subir", id="id_social_network_boton", class="button")
+							table(cellpadding="0", cellspacing="0")
+								tr
+									td
+										input(id="id_social_network", name="id_social_network", type="text")
+										input(id="id_social_network_fort", name="id_social_network_fort", type="hidden")
+									td
+										.button_wrapper#social_network_boton
+											.button_underneath
+												input(type="submit", value="Buscar", id="id_social_network_boton", class="button")
 				td
 					.login_contenedor_loader(style="padding-left:50px")
 						img(src="images/loader.gif")

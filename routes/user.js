@@ -223,6 +223,7 @@ exports.pictureUpload = function(req, res){
 			      		res.end();      
 		          }
 		          else {
+		          	fs.chmodSync(target_path, 0755);
 			          res.write('0');
 			      		res.end();     
 		          }

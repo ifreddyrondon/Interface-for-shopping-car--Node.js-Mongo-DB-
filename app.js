@@ -7,6 +7,7 @@ var express = require('express')
   , path = require('path')
   , gzippo = require('gzippo')
   , user = require('./routes/user')
+  ,	admin = require('./routes/admin')
   , disponibilidad = require('./routes/disponibilidad')
 
 var app = module.exports = express.createServer(
@@ -48,6 +49,8 @@ app.post('/datos', user.datos);
 app.post('/user/datos', user.datosUpdate);
 app.post('/user/datos/update', user.update);
 app.post('/user/datos/pass', user.pass);
+//ADMIN
+app.post('/admin/product', admin.product);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

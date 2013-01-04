@@ -29,5 +29,8 @@ html
 		if !sesion
 			script	head.js("javascripts/routingUnLogin.js","javascripts/login.js","javascripts/registrar.js","javascripts/jquery.tipTip.minified.js")
 		else
-			script	head.js("javascripts/user_panel.js","javascripts/user_update_datos.js","javascripts/picture.js","javascripts/jQuery.fileinput.js")	
+			script	head.js("javascripts/user_panel.js","javascripts/user_update_datos.js","javascripts/picture.js")	
+			script(src="javascripts/jQuery.fileinput.js", type="text/javascript")	
+			if sesion.tipo == 'a'
+				script	head.js("javascripts/user_admin.js")
 		script	impress().init()
