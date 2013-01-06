@@ -2,7 +2,7 @@ $(document).ready(function(){
 	routie({
 		'product': function(){
 			//picIzq();
-			hideUserPanel();
+			//hideUserPanel();
 			$.ajax({
       	type: "POST",
 				url: "/admin/product",
@@ -11,7 +11,7 @@ $(document).ready(function(){
 				},
         success: function( products ){
 	        $("#login_contenedor_loader").hide();
-	       // console.log(products[0]['Nombre_Producto']);
+	        alert(products[0]['Nombre_Producto']);
  				}
 			});
 		},	

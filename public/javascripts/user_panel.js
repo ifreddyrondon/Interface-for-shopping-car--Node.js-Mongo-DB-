@@ -163,7 +163,7 @@ $(document).ready(function() {
 		$('#login').corner("left, 8px");
 		$("#user_panel_picture_atras").show();
 	}
-	var picIzq = function picIzq(){
+	function picIzq(){
 		$("#user_picture_img").css("position","absolute");
 		$("#user_picture_img").css("left","18px");
 		$("#user_picture_img").css("top","20px");
