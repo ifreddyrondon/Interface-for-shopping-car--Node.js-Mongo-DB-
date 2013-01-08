@@ -12,12 +12,11 @@ exports.product = function(req, res){
 			  }
 			  else {
 				  //res.send(rows);
-				  local_var = "I am a local var";
 				  console.log(rows[0]['Nombre_Producto']);
-				  console.log(local_var);
-				  res.render('user/admin/index_img',function(err,html){
+				  res.render('user/admin/view_productos', {locals:{hola: 'edit your blog'}}, function(err, html){
+				  //res.render('user/admin/view_productos', {hola: 'edit your blog'}, function(err, html){
 					  if (err) console.log(err);
-					  else res.send(html);
+					  else console.log("todo fino en el render");
 					});
 
 			  }

@@ -11,7 +11,9 @@ $(document).ready(function(){
 				},
         success: function(products){
 	        $("#bowlG").hide();
-	        $(".big_container").html(products);
+	        //var twitter = {username : 'freddy',  };
+	        //$('#tweets').tmpl(twitter).appendTo('#twitter');
+	        //alert(products[0]['Nombre_Producto']);
  				}
 			});
 		},	
