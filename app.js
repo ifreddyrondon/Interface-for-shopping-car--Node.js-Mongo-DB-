@@ -38,7 +38,7 @@ app.post('/disponibilidad', disponibilidad.disponibilidad);
 app.post('/registrar', user.registrar);
 app.post('/login', user.login);
 app.get('/logout', user.logout);
-//PICTURES
+//PICTURE
 app.post('/pictures/upload', user.pictureUpload);
 app.post('/pictures/SN', user.pictureSN);
 app.post('/pictures/save', user.pictureSave);

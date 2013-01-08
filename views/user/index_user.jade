@@ -14,11 +14,11 @@
 				include proveedor/view_proveedor			
 			if sesion.tipo == 'u'
 				include usuario/view_user			
-		.login_contenedor_loader(align="center")
-			img(src="images/loader.gif")
 		a(href="/logout", id="logout")
 			img(src="images/logout.png")
 	include index_comunes/index_img
 		#user_panel_picture_atras
 	include index_comunes/index_datos
+	if sesion.tipo == 'a'
+		include admin/view_productos			
 	

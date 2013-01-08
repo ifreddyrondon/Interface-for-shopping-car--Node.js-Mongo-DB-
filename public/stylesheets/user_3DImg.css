@@ -17,10 +17,6 @@
 	background-color:#666666;
 	padding-left:10px;border-width:0px;
 	outline:none;overflow:hidden;}
-#user_picture_loaderbar{
-	display:none;
-	float:left;
-	padding-left:20px;	}
 .user_picture_info_crop{
 	position: absolute; 
 	left:30px;

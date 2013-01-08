@@ -37,6 +37,13 @@ $(document).ready(function() {
 			$("#registrar_user").css("background-color","#FFFFFF");
 			$("#registrar_user").tipTip({delay: "100", content: "<font class='registrar_tip' size='2px'>Debe colocar un Usuario</font>"});
 		} 
+		if ($("#registrar_user").val().length < 4){
+			$("#registrar_user").val('Usuario');
+			$("#registrar_user").css('color','#bbbbbb');
+			$("#registrar_user").css("background","url('images/warning.png') no-repeat right center");
+			$("#registrar_user").css("background-color","#FFFFFF");
+			$("#registrar_user").tipTip({delay: "100", content: "<font class='registrar_tip' size='2px'>Minimo 4 caracteres</font>"});
+		}
 		else {
 			var user_data = 'user_data='+ $('#registrar_user').val();
 			$.ajax({
@@ -277,10 +284,15 @@ $(document).ready(function() {
 	function registrar(){
 		$("#registrar_pass").val(CryptoJS.SHA512($('#registrar_pass').val()));
 		$("#registrar_error").hide();
+		$("#registrar_error_procesamiento").hide();	
 		$("#form-reg").ajaxForm({
 			type: "POST",
 			url: "/registrar",
+			beforeSend: function(){
+				$("#bowlG").show();
+			}
 			success: function( registrar_respuesta ){
+				$("#bowlG").hide();
 				$("#registrar_enviar").attr("disabled", true);
 				if(registrar_respuesta == '1'){
 					$("#registrar_error_procesamiento").show();	

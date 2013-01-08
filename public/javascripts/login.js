@@ -64,17 +64,22 @@ $(document).ready(function() {
 				url: "/login",
         data: login_data,
 	      beforeSend: function(){
-				 	$("#login_contenedor_loader").show();
+				 	$("#bowlG").show();
 				},
         success: function( login_verificar ){
 					$("#login_enviar").attr("disabled", true);
-					$("#login_contenedor_loader").hide();
+					$("#bowlG").hide();
 					if(login_verificar == '1'){
 						$("#login_error_datos").show();
 						$("#login_success").hide();
 						$("#login_enviar").attr("disabled", false);
 					}
-					else {	
+					if(login_verificar == '2'){
+						$("#login_error_2").show();
+						$("#login_success").hide();
+						$("#login_enviar").attr("disabled", false);
+					}
+					if(login_verificar == '0'){
 						window.location = "/";
 					}
 				}

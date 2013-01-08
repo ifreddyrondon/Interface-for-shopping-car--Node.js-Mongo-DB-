@@ -52,10 +52,10 @@ $(document).ready(function() {
 				type: "POST",
 				url: "/user/datos/update",
 				beforeSend: function(){
-					 	$("#login_contenedor_loader").show();
+					$("#bowlG").show();
 				},
 				success: function(datos){
-					$("#login_contenedor_loader").hide();
+					$("#bowlG").hide();
 		      if(datos == '1'){
 			    	alert("PROBLEMA");
 		      }
@@ -143,10 +143,10 @@ $(document).ready(function() {
 				type: "POST",
 				url: "/user/datos/pass",
 				beforeSend: function(){
-					 	$("#login_contenedor_loader").show();
+					$("#bowlG").show();
 				},
 				success: function(datos){
-					$("#login_contenedor_loader").hide();
+					$("#bowlG").hide();
 		      if(datos == '1'){
 			    	$(".error_clave_error").show(); 
 		      }

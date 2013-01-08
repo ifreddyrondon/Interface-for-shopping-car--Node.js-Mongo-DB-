@@ -77,11 +77,11 @@ $(document).ready(function() {
 			url: "pictures/SN",
 			type: "post",
 			beforeSend: function(){
-			 	$(".login_contenedor_loader").show();
+			 	$("#bowlG").show();
 			},
 			success: function( picture_social_network ){
 				$("#id_social_network_boton").attr("disabled", true);
-				$(".login_contenedor_loader").hide();
+				$("#bowlG").hide();
 				if(picture_social_network == '0'){
 					var picture = $('#user_panel_foto_upload_src').val()+".jpg";			
 					$("#user_panel_foto_after_upload").html("<img id='user_panel_foto_upload' src='"+ picture +"' onLoad=sizePicture() />");
@@ -110,13 +110,23 @@ $(document).ready(function() {
 			url: "/pictures/upload", 
 			type: "post",    
 			beforeSubmit: function(){
-    		$("#user_picture_loaderbar").show();
+    		$("#bowlG").show();
       },
 			success: function( respuesta_picture ){	
 				$("#upload_picture").attr("disabled", true);
-				$("#user_picture_loaderbar").hide();
-				if(respuesta_picture == '0'){	
-					var picture = $('#user_panel_foto_upload_src').val()+".jpg";			
+				$("#bowlG").hide();
+				if(respuesta_picture == '1'){
+					$("#user_panel_foto_error_tamaño").show();
+					$("#user_panel_foto_opciones_upload").hide();
+					$("#upload_picture").removeAttr("disabled");
+				}
+				if(respuesta_picture == '2'){
+					$("#user_panel_foto_error").show();
+				  $("#user_panel_foto_opciones_upload").hide();
+					$("#upload_picture").removeAttr("disabled");
+				}
+				else {
+					picture = $('#user_panel_foto_upload_src').val()+".jpg";			
 					$("#user_panel_foto_after_upload").html("<img id='user_panel_foto_upload' src='"+ picture +"' onLoad=sizePicture() />");
 					$("#user_picture_img_tmp").html("<img id='preview_img' src='"+ picture +"' onLoad=cornersPreviewImg() />");
 					$("#user_picture_img_tmp").show();
@@ -126,18 +136,8 @@ $(document).ready(function() {
 					$("#user_panel_foto_titulo").hide();
 					$("#user_panel_foto_after_upload").show();
 					$("#user_picture_info_crop_info").show();
-					$('#user_panel_foto_upload').imgAreaSelect({  x1: 0, y1: 0, x2: 50 , y2: 50 , aspectRatio: '1:1', handles: true, onSelectChange: preview });
 					$("#upload_picture").removeAttr("disabled");											
-				}
-				else if(respuesta_picture == '1'){
-					$("#user_panel_foto_error_tamaño").show();
-					$("#user_panel_foto_opciones_upload").hide();
-					$("#upload_picture").removeAttr("disabled");
-				}
-				else if(respuesta_picture == '2'){
-					$("#user_panel_foto_error").show();
-				  $("#user_panel_foto_opciones_upload").hide();
-					$("#upload_picture").removeAttr("disabled");
+					$('#user_panel_foto_upload').imgAreaSelect({  x1: 0, y1: 0, x2: 50 , y2: 50 , aspectRatio: '1:1', handles: true, onSelectChange: preview });
 				}
 			}	
     	}); 
@@ -153,11 +153,11 @@ $(document).ready(function() {
 				type: "post",
 				url: "/pictures/save",
 				beforeSend: function(){
-					$(".login_contenedor_loader").show();
+					$("#bowlG").show();
 				},
 				success: function( respuesta_upload_save ){
 					$("#save_thumb").attr("disabled", true);
-					$(".login_contenedor_loader").hide();  
+					$("#bowlG").hide();
 					if (respuesta_upload_save == 1){
 						$("#user_picture_error_upload").show();	
 						$("#save_thumb").removeAttr("disabled");
@@ -174,11 +174,11 @@ $(document).ready(function() {
 			type: "post",
 			url: "/pictures/delete",
 			beforeSend: function(){
-				$(".login_contenedor_loader").show();
+				$("#bowlG").show();
 			},
 			success: function( respuesta_upload_del ){
 				$("#delete_thumb").attr("disabled", true);
-				$(".login_contenedor_loader").hide();  
+				$("#bowlG").hide();
 				if (respuesta_upload_del == 1){
 					$("#user_picture_error_upload").show();
 					$("#delete_thumb").removeAttr("disabled");
@@ -204,11 +204,11 @@ $(document).ready(function() {
 			type: "post",
 			url: "/pictures/default",
 			beforeSend: function(){
-				$(".login_contenedor_loader").show();
+				$("#bowlG").show();
 			},
 			success: function( respuesta_upload_default ){
 				$("#default_thumb").attr("disabled", true);
-				$(".login_contenedor_loader").hide();  
+				$("#bowlG").hide();
 				if (respuesta_upload_default == 1){
 					$("#user_picture_error_upload").show();
 					$("#delete_thumb").removeAttr("disabled");

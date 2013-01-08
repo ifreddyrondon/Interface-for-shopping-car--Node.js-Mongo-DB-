@@ -40,10 +40,10 @@ $(document).ready(function() {
 				url: "/datos",
         data:'id='+id,
 	      beforeSend: function(){
-				 	$("#login_contenedor_loader").show();
+				 	$("#bowlG").show();
 				},
         success: function( datos ){
-	        $("#login_contenedor_loader").hide();
+	        $("#bowlG").hide();
 	        if(datos == '1'){
 		        alert("PROBLEMA");
 	        }
@@ -70,10 +70,10 @@ $(document).ready(function() {
 				url: "/user/datos",
         data:'id='+id,
 	      beforeSend: function(){
-				 	$("#login_contenedor_loader").show();
+				 	$("#bowlG").show();
 				},
         success: function( datos ){
-	        $("#login_contenedor_loader").hide();
+	        $("#bowlG").hide();
         	if(datos){
         		$('#datos').show();
         		$('#update_nombre').val(datos.nombre);

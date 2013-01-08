@@ -2,7 +2,7 @@
 #registrar_user{	border-bottom:1px;border-color: #000000;	}
 #registrar_correo, #registrar_phone, #registrar_documento{ border-top-width: 0px }
 #registrar_pass{	display:none;	pointer-events: auto	}
-#registrar_error, #registrar_error_procesamiento, #registrar_success, #registrar_mail_error, #registrar_cerrar_contenedor, .beforeSend_loader, #registrar_documento, #user_fin, #prov_fin {	display:none }
+#registrar_error, #registrar_error_procesamiento, #registrar_success, #registrar_mail_error, #registrar_cerrar_contenedor, #registrar_documento, #user_fin, #prov_fin {	display:none }
 .registrar_tip{	font-weight: 100;	font-family: monospace	}
 /*------LOGIN----------------------------*/
 #login_user{
@@ -15,7 +15,7 @@
 	text-shadow:0px 1px 0px rgba(101,101,101,0.6); 
 	color: #000000;
 	font-family: monospace;	}
-#login_error_datos, #login_cerrar_contenedor, #login_error, #user_panel_picture_atras{	display:none }
+#login_error_datos, #login_cerrar_contenedor, #login_error, #user_panel_picture_atras, #login_error_2{	display:none }
 /*--IOS-Recuerdame---*/
 .onoffswitch {	position: relative; width: 61px;-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;	}.onoffswitch-checkbox {	display: none;}
 .onoffswitch-label {	display: block; overflow: hidden; cursor: pointer;border: 2px solid #231F20; border-radius: 17px;}

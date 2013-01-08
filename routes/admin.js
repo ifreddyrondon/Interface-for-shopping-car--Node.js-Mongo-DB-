@@ -11,7 +11,14 @@ exports.product = function(req, res){
 				  res.end();
 			  }
 			  else {
-				  res.send(rows);
+				  //res.send(rows);
+				  console.log(rows[0]['Nombre_Producto']);
+				  res.render('user/admin/view_productos', {locals:{hola: 'edit your blog'}}, function(err, html){
+				  //res.render('user/admin/view_productos', {hola: 'edit your blog'}, function(err, html){
+					  if (err) console.log(err);
+					  else console.log("todo fino en el render");
+					});
+
 			  }
 			});
 	}

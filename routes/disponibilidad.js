@@ -1,11 +1,16 @@
+var BD = require('../BD')
+	,	sanitize = require('validator').sanitize;
+
 exports.disponibilidad = function(req, res){
-	
-	var BD = require('../BD');
+
 	var objBD = BD.BD();
 	objBD.connect();
-
+	
 	if(req.body.user_data){
-		objBD.query("SELECT User FROM persona WHERE User = "+ objBD.escape(req.body.user_data) +"", 
+		user = sanitize(req.body.user_data).trim(); 	
+		user = sanitize(user).xss();
+		user = sanitize(user).entityDecode();
+		objBD.query("SELECT User FROM persona WHERE User = "+ objBD.escape(user) +"", 
 		function(err, rows, fields) {
 	    if (err) throw err;
 	    else {
@@ -21,7 +26,10 @@ exports.disponibilidad = function(req, res){
 	  });
 	}
 	if(req.body.correo_data){
-		objBD.query("SELECT Correo FROM persona WHERE Correo = "+ objBD.escape(req.body.correo_data) +"", 
+		correo = sanitize(req.body.correo_data).trim(); 		
+		correo = sanitize(correo).xss();
+		correo = sanitize(correo).entityDecode();
+		objBD.query("SELECT Correo FROM persona WHERE Correo = "+ objBD.escape(correo) +"", 
 		function(err, rows, fields) {
 	    if (err) throw err;
 	    else {
@@ -37,7 +45,10 @@ exports.disponibilidad = function(req, res){
 	  });
 	}
 	if(req.body.doc_data){
-		objBD.query("SELECT RIF FROM proveedor WHERE RIF = "+ objBD.escape(req.body.doc_data) +"", 
+		doc = sanitize(req.body.doc_data).trim(); 		
+		doc = sanitize(doc).xss();
+		doc = sanitize(doc).entityDecode();
+		objBD.query("SELECT RIF FROM proveedor WHERE RIF = "+ objBD.escape(doc) +"", 
 		function(err, rows, fields) {
 	    if (err) throw err;
 	    else {
