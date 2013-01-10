@@ -1,0 +1,27 @@
+.big_container
+	.botonera
+		.button_wrapper
+			.button_underneath.button_underneath_2
+				a(href="#product", class="button", style="width: 117px") Regresar
+	.big_contenido
+		#product(align="center", class="font")
+			<br />
+			font(size="6", class="titulo")	Nuevo Producto		
+		form(id="form-update")
+			<br />
+			div
+				input(id="create_product_nombre", name="create_product_nombre", type="text", value="", class="campos")
+				br
+				input(id="create_product_cantidad_inicial", name="create_product_cantidad_inicial", type="text", value="", class="campos")
+				br
+				input(id="create_product_peso", name="create_product_peso", type="text", value="", class="campos")
+				br
+				input(id="create_product_tamano", name="create_product_tamano", type="text", value="", class="campos")
+				br
+				input(id="create_product_precio", name="create_product_precio", type="text", value="", class="campos")
+				br
+				textarea(id="create_product_descripcion", name="create_product_descripcion", rows="4", cols="28")
+			<br />
+			.button_wrapper(align="center")
+				.button_underneath
+					input(id="btn_update_enviar", type="submit", value="Crear", class="button")

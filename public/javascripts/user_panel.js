@@ -20,7 +20,6 @@ $(document).ready(function() {
 			$(".user_container").css("width",pageWindow.width()-90);
 			$("#logout").hide();
 			$("#user_panel_contenido").hide();
-			$('#login').corner("left, 8px");
 			$("#user_panel_picture_atras").show();
 			$(".big_container").hide();		
 			$('#photoimg').customFileInput();
@@ -160,7 +159,6 @@ $(document).ready(function() {
 		$(".big_container").show();
 		$("#logout").hide();
 		$("#user_panel_contenido").hide();
-		$('#login').corner("left, 8px");
 		$("#user_panel_picture_atras").show();
 	}
 	function picIzq(){

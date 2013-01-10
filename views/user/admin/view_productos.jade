@@ -1,5 +1,18 @@
 .big_container
-	#productos_admin(align="center", class="font")
-		<br />
-		font(size="6", class="titulo") Productos
-		p= local_var
+	.botonera
+		.button_wrapper
+			.button_underneath.button_underneath_2
+				a(href="#product/create", class="button", style="width: 117px") Nuevo Producto	
+	.big_contenido
+		#product(align="center", class="font")
+			<br />
+			font(size="6", class="titulo")	Productos		
+		-for (var i=0; i<hola.length; i++)
+			.productos_individual(onclick="location.href='#product/view/#{hola[i]['ID_Producto']}'")	
+				table
+					tr
+						td
+							h4	#{hola[i]['Nombre_Producto']} 
+					tr(class="font")
+						td	#{hola[i]['Precio']} 
+						td(align="right")	[#{hola[i]['Cantidad_Inicial']},#{hola[i]['Cantidad_Restante']}]

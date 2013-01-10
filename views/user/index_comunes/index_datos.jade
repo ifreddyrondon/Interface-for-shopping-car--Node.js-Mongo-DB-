@@ -1,8 +1,6 @@
 .big_container
-	#datos(align="center", class="font")
-		<br />
-		font(size="6", class="titulo")	Mis Datos
-		#btn_update.user_picture_info_crop(style="left: 0px; position: absolute")
+	.botonera
+		#btn_update
 			#update_datos.button_wrapper
 				.button_underneath.button_underneath_2
 					a(href="#user/datos/update/#{sesion.id}", class="button", style="width: 118px") Actualizar datos
@@ -12,81 +10,85 @@
 			#update_clave.button_wrapper
 				.button_underneath.button_underneath_2
 					a(href="#pass", class="button", style="width: 117px") Cambiar Clave
-		#datos_container
-		#datosUpdate_container
-			form(id="form-update")
-				<br />
-				div
-					table
-						tr
-							td
-								font(size="6")	Personales
-						tr
-							td
-								font(size="4")	Nombre
-							td
-								input(id="update_nombre", name="update_nombre", type="text", value="", class="campos2")
-						tr
-							td
-								font(size="4")	Email
-							td
-								input(id="update_correo", name="update_correo", type="text", value="", class="campos2")
-						tr
-							td
-								font(size="4")	Telefono
-							td
-								input(id="update_phone", name="update_phone", type="text", value="", class="campos2")
-						tr
-							td
-								font(size="6")	Direccion
-						tr
-							td
-								font(size="4")	Estado
-							td
-								input(id="update_estado", name="update_estado", type="text", value="", class="campos2")
-						tr
-							td
-								font(size="4")	Ciudad
-							td
-								input(id="update_ciudad", name="update_ciudad", type="text", value="", class="campos2")
-						tr
-							td
-								font(size="4")	Codigo Postal
-							td
-								input(id="update_postal", name="update_postal", type="text", value="", class="campos2")
-						tr
-							td
-								font(size="4")	Direccion
-							td
-								textarea(id="update_direccion", name="update_direccion", rows="4", cols="28")
-				<br />
-				.button_wrapper
-					.button_underneath
-						input(id="btn_update_enviar", type="submit", value="Actualizar", class="button")
-			<br /><br /><br /><br /><br />
-			#registrar_error.font_error	Debe completar los datos requeridos
-		#datos_pass
-			#datos_pass_size
-				<br />
-				font(size="5")	Cambiar Clave
-				<br /><br />
-				form(id="form-pass")
-					input(id="old_pass", name="old_pass", class="campos campos_border", type="text", value="Clave", alt="Clave actual", style="color:#000000")
-					input(id="old_pass_temp", name="old_pass_temp", class="campos campos_border", type="password", alt="Clave actual", style="color:#000000")
-					input(id="new_pass", name="new_pass", class="campos campos_border", type="text", value="Nueva clave", alt="Nueva clave", style="color:#000000")
-					input(id="new_pass_temp", name="new_pass_temp", class="campos campos_border", type="password", alt="Nueva clave", style="color:#000000")
-					input(id="repeat_new_pass", name="repeat_new_pass", class="campos campos_border", type="text", value="Repita la clave", alt="Repita la nueva clave", style="color:#000000")
-					input(id="repeat_new_pass_temp", name="repeat_new_pass_temp", class="campos campos_border", type="password", alt="Repita la nueva clave", style="color:#000000")
-					<br /><br />
+	.big_contenido
+		#datos(align="center", class="font")
+			<br />
+			font(size="6", class="titulo")	Mis Datos
+			#datos_container
+			#datosUpdate_container(align="center")
+				form(id="form-update")
+					<br />
+					div
+						table
+							tr
+								td
+									font(size="6")	Personales
+							tr
+								td
+									font(size="4")	Nombre
+								td
+									input(id="update_nombre", name="update_nombre", type="text", value="", class="campos2")
+							tr
+								td
+									font(size="4")	Email
+								td
+									input(id="update_correo", name="update_correo", type="text", value="", class="campos2")
+							tr
+								td
+									font(size="4")	Telefono
+								td
+									input(id="update_phone", name="update_phone", type="text", value="", class="campos2")
+							tr
+								td
+									font(size="6")	Direccion
+							tr
+								td
+									font(size="4")	Estado
+								td
+									input(id="update_estado", name="update_estado", type="text", value="", class="campos2")
+							tr
+								td
+									font(size="4")	Ciudad
+								td
+									input(id="update_ciudad", name="update_ciudad", type="text", value="", class="campos2")
+							tr
+								td
+									font(size="4")	Codigo Postal
+								td
+									input(id="update_postal", name="update_postal", type="text", value="", class="campos2")
+							tr
+								td
+									font(size="4")	Direccion
+								td
+									textarea(id="update_direccion", name="update_direccion", rows="4", cols="28")
+					<br />
 					.button_wrapper
 						.button_underneath
-							input(id="btn_update_pass", type="submit", value="Actualizar", class="button")
-					<br /><br /><br /><br /><br />
-					.error_clave.font_error	La Clave debe contener almenos 6 caracteres
-					.error_clave_faltan.font_error	Debe completar los datos requeridos
-					.error_clave_incorrecta.font_error	Su Clave es incorrecta
-					.error_clave_error.font_error	A ocurrido un error, por favor intentelo de nuevo en un momento
-					.error_clave_coinciden.font_error	La Clave nueva no coincide 
-					
-					
-					
+							input(id="btn_update_enviar", type="submit", value="Actualizar", class="button")
+				<br /><br /><br /><br /><br />
+				#registrar_error.font_error	Debe completar los datos requeridos
+			#datos_pass(align="center")
+				#datos_pass_size
+					<br />
+					font(size="5")	Cambiar Clave
+					<br /><br />
+					form(id="form-pass")
+						input(id="old_pass", name="old_pass", class="campos campos_border", type="text", value="Clave", alt="Clave actual", style="color:#000000")
+						input(id="old_pass_temp", name="old_pass_temp", class="campos campos_border", type="password", alt="Clave actual", style="color:#000000")
+						input(id="new_pass", name="new_pass", class="campos campos_border", type="text", value="Nueva clave", alt="Nueva clave", style="color:#000000")
+						input(id="new_pass_temp", name="new_pass_temp", class="campos campos_border", type="password", alt="Nueva clave", style="color:#000000")
+						input(id="repeat_new_pass", name="repeat_new_pass", class="campos campos_border", type="text", value="Repita la clave", alt="Repita la nueva clave", style="color:#000000")
+						input(id="repeat_new_pass_temp", name="repeat_new_pass_temp", class="campos campos_border", type="password", alt="Repita la nueva clave", style="color:#000000")
+						<br /><br />
+						.button_wrapper
+							.button_underneath
+								input(id="btn_update_pass", type="submit", value="Actualizar", class="button")
+						<br /><br /><br /><br /><br />
+						.error_clave.font_error	La Clave debe contener almenos 6 caracteres
+						.error_clave_faltan.font_error	Debe completar los datos requeridos
+						.error_clave_incorrecta.font_error	Su Clave es incorrecta
+						.error_clave_error.font_error	A ocurrido un error, por favor intentelo de nuevo en un momento
+						.error_clave_coinciden.font_error	La Clave nueva no coincide 
+						
+						
+						

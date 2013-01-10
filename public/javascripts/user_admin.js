@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	routie({
 		'product': function(){
-			hideUserPanel();
 			picIzq();
+			hideUserPanel();
 			$.ajax({
       	type: "POST",
 				url: "/admin/product",
@@ -11,7 +11,27 @@ $(document).ready(function(){
 				},
         success: function(products){
 	        $("#bowlG").hide();
-	        $(".big_container").html(products);
+	        $(".big_container").html(products).hide().show();
+ 				}
+			});
+		},
+		'product/create': function(){
+			picIzq();
+			hideUserPanel();
+			$.ajax({
+      	type: "POST",
+				url: "/admin/product/create",
+	      beforeSend: function(){
+				 	$("#bowlG").show();
+				},
+        success: function(products){
+        	if (products == '1'){
+	        	alert("error");
+        	}
+        	else {
+		        $("#bowlG").hide();
+		        $(".big_container").html(products).hide().show();
+	        }
  				}
 			});
 		},	
@@ -24,7 +44,6 @@ $(document).ready(function(){
 		$(".big_container").show();
 		$("#logout").hide();
 		$("#user_panel_contenido").hide();
-		$('#login').corner("left, 8px");
 		$("#user_panel_picture_atras").show();
 	}
 	function picIzq(){
