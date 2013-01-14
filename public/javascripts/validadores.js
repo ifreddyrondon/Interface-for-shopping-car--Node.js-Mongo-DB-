@@ -100,8 +100,7 @@ $(document).ready(function(){
 		});
 	}
 	function ajaxDatos(url,id){
-		//$.ajax({
-		document.getElementById(id).ajaxForm({
+		$(document.getElementById(id)).ajaxForm({
 	  	type: 'POST',
 			url: url,
 	    beforeSend: function(){

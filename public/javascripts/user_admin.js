@@ -22,23 +22,7 @@ $(document).ready(function(){
 	$(document).on("click", "#btn_crear_producto_enviar", function() { //delegar
 		if(validator("empty","create_product_nombre") && validator("empty,number","create_product_cantidad_inicial") && validator("empty,number","create_product_peso") && validator("empty,number","create_product_tamano") && validator("empty,number","create_product_precio") && validator("empty","create_product_descripcion") && validator("empty,formatImage","photoimg")){
 			$(".error_datos_create_product").hide();
-			//ajaxDatos("/admin/product/createSend","form-create_product");
-			$("#form-create_product").ajaxForm({
-				type: "POST",
-				url: "/admin/product/createSend",
-				beforeSend: function(){
-					$("#bowlG").show();
-				},
-				success: function(res){
-					$("#bowlG").hide();
-		      if(res == '1'){
-			    	alert("PROBLEMA");
-		      }
-		      else {
-		      	$(".big_container").html(res);
-		      }
-				}
-			});
+			ajaxDatos("/admin/product/createSend","form-create_product");
 		}
 		else {
 			$(".error_datos_create_product").show();
