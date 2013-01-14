@@ -52,6 +52,7 @@ app.post('/user/datos/pass', user.pass);
 //ADMIN
 app.post('/admin/product', admin.product);
 app.post('/admin/product/create', admin.productCreate);
+app.post('/admin/product/createSend', admin.productCreateSend);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

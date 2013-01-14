@@ -14,6 +14,7 @@ exports.product = function(req, res){
 				  res.render('user/admin/view_productos', { hola: rows });
 			  }
 			});
+		objBD.end();
 	}
 	else
 		console.log("No tienes los permisos suficientes");	
@@ -21,6 +22,13 @@ exports.product = function(req, res){
 exports.productCreate = function(req, res){
 	if(req.session.user.tipo == 'a'){
 		res.render('user/admin/create_product');
+	}
+	else
+		console.log("No tienes los permisos suficientes");	
+}
+exports.productCreateSend = function(req, res){
+	if(req.session.user.tipo == 'a'){
+		console.log(req.body.create_product_nombre);
 	}
 	else
 		console.log("No tienes los permisos suficientes");	

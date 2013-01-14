@@ -290,7 +290,7 @@ $(document).ready(function() {
 			url: "/registrar",
 			beforeSend: function(){
 				$("#bowlG").show();
-			}
+			},
 			success: function( registrar_respuesta ){
 				$("#bowlG").hide();
 				$("#registrar_enviar").attr("disabled", true);
@@ -316,10 +316,7 @@ $(document).ready(function() {
 		$("#login_tap").css("right","140px");
 		$("#registrar_tap").css("right","40px");	
 	});	 
-	
-	
 });
-
 function validaCorreo(correo) {
 	var expresion = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 	return expresion.test(correo);

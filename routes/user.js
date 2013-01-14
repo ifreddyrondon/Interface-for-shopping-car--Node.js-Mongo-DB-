@@ -89,6 +89,7 @@ exports.registrar = function(req, res){
 							  }
 							});
 				  }
+				  objBD.end();
 				});	
 		}
 		else if(registrar_documento != 'RIF'){
@@ -129,6 +130,7 @@ exports.registrar = function(req, res){
 							  }
 							});
 				  }
+				  objBD.end();
 				});	
 		}
 	} catch (e) {
@@ -220,6 +222,7 @@ exports.login = function(req, res){
 		    }
 		    else{res.write('1');res.end();}
 	    }
+	    objBD.end();
 	  }); 
 	}
 }
@@ -442,6 +445,7 @@ exports.datos = function(req, res){
 				  		}
 				  	});
 		  		}
+		  		objBD.end();
 		  	});
 		  }
 		  else
@@ -471,10 +475,8 @@ exports.update = function(req, res){
 		  check(req.body.update_correo).notNull().len(6, 64).isEmail();
 		  check(req.body.update_phone).notNull().len(4);
 		  check(req.body.update_nombre).notNull();
-		  check(req.body.update_estado).notNull();
-		  check(req.body.update_ciudad).notNull();
-		  check(req.body.update_direccion).notNull();
-		  check(req.body.update_postal).notNull().isInt();
+		  if(req.body.update_postal != '')
+		  	check(req.body.update_postal).isInt();
 			
 			nombre = sanitize(req.body.update_nombre).xss();
 			nombre = sanitize(nombre).entityDecode();
@@ -511,7 +513,8 @@ exports.update = function(req, res){
 									res.end();
 								}
 						});
-					}	
+					}
+					objBD.end();	
 			});
 		} catch (e) {
 		  res.write('1');
@@ -561,6 +564,7 @@ exports.pass = function(req, res){
 						res.end();
 					}
 				}
+			objBD.end();
 		});
 	}
 };

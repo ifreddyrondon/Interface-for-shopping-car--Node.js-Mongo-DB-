@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$('#photoimg').live('change', function(){ 
 		var ext = $('#photoimg').val().split('.').pop().toLowerCase(); 	
 		if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){  
-        	$("#user_panel_foto_error_formato").show();
+      $("#user_panel_foto_error_formato").show();
 			$("#user_panel_foto_error_tamaño").hide();
 			$("#user_panel_foto_opciones_upload").hide();   
 		}
