@@ -32,9 +32,7 @@
 .productos_individual{with:100px;background-color:rgba(101,101,101,0.5);color:#ffffff;padding:0px 6px 0px 6px;float:left;margin:4px;
 	-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 .productos_individual:hover, .productos_individual:focus { color: #000000; background: rgba(255,255,255,1); text-shadow: -1px -1px 2px rgba(100,100,100,0.5) }
-
-#datos_pass_size{width: 250px}
-#shopping_menu, #user_panel_show_before_picture, #user_panel_foto_after_upload, #user_picture_info_crop_error, #user_panel_foto_error_vacio, #user_panel_foto_error_bad, #user_panel_foto_opciones_upload, #user_panel_foto_error_formato, #user_panel_foto_error_tamano, #user_panel_foto_error, #id_social_network_form, #user_panel_tap_titulo, #datos, #user_picture_info_crop_info, #registrar_error, #datos_pass, #new_pass_temp, #repeat_new_pass_temp, #old_pass_temp, .error_clave, .error_clave_faltan, .error_clave_coinciden, .error_clave_error, .error_clave_incorrecta, .error_datos_create_product {display:none}
+#shopping_menu, #user_panel_show_before_picture, #user_panel_foto_after_upload, #user_picture_info_crop_error, #user_panel_foto_error_vacio, #user_panel_foto_error_bad, #user_panel_foto_opciones_upload, #user_panel_foto_error_formato, #user_panel_foto_error_tamano, #user_panel_foto_error, #id_social_network_form, #user_panel_tap_titulo, #datos, #user_picture_info_crop_info, #registrar_error, .error_clave, .error_clave_faltan, .error_clave_coinciden, .error_clave_error, .error_clave_incorrecta, .error_datos_create_product {display:none}
 /*---3D Efecto over img-----*/
 .parent1 { position:absolute;top:0px;width:200px;height: 0;z-index:100;overflow: hidden;
   -webkit-transition-property: height;-webkit-transition-duration: 1s;-webkit-perspective: 1000px;-webkit-transform-style: preserve-3d;-moz-transition-property:height;-moz-transition-duration: 1s;-moz-perspective: 1000px;-moz-transform-style: preserve-3d;-o-transition-property:height;-o-transition-duration: 1s;-o-perspective: 1000px;-o-transform-style: preserve-3d;transition-property: height;transition-duration: 1s;perspective: 1000px;transform-style: preserve-3d;}

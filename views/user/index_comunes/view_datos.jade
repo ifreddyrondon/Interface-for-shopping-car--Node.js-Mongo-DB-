@@ -1,0 +1,53 @@
+.botonera
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#user/datos/update/#{sesion.id}", class="button", style="width: 118px") Actualizar datos
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#pass", class="button", style="width: 117px") Cambiar Clave
+.big_contenido(align="center")
+	div(align="center", class="font")
+		font(size="6", class="titulo")	Mis Datos
+	#datos_container
+		br
+		table(cellpadding="4")
+			tr
+				td(class="font_w")
+					font(size="4")	Usuario:
+				td(class="font")
+					font(size="5")	#{datos.user}
+			tr
+				td(class="font_w")
+					font(size="4")	Nombre:
+				td(class="font")
+					font(size="5")	#{datos.nombre}
+			tr
+				td(class="font_w")
+					font(size="4")	Email:
+				td(class="font")
+					font(size="5")	#{datos.correo}
+			tr
+				td(class="font_w")
+					font(size="4")	Telefono:
+				td(class="font")
+					font(size="5")	#{datos.telefono}
+			tr
+				td(class="font_w")
+					font(size="4")	Estado:
+				td(class="font")
+					font(size="5")	#{datos.estado}
+			tr
+				td(class="font_w")
+					font(size="4")	Ciudad:
+				td(class="font")
+					font(size="5")	#{datos.ciudad}
+			tr
+				td(class="font_w")
+					font(size="4")	Direccion:
+				td(class="font")
+					font(size="5")	#{datos.direccion}
+			tr
+				td(class="font_w")
+					font(size="4")	Codigo Postal:
+				td(class="font")
+					font(size="5")	#{datos.codigo_postal}

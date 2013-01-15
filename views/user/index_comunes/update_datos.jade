@@ -1,0 +1,62 @@
+.botonera
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#datos/#{sesion.id}", class="button", style="width: 118px") Regresar
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#pass", class="button", style="width: 117px") Cambiar Clave
+.big_contenido(align="center")
+	div(align="center", class="font")
+		font(size="6", class="titulo")	Actualizar Datos
+	#datosUpdate_container(align="center")
+		form(id="form-update")
+			<br />
+			div(class="font")
+				table
+					tr
+						td
+							font(size="6")	Personales
+					tr
+						td
+							font(size="4")	Nombre:
+						td
+							input(id="update_nombre", name="update_nombre", type="text", value="#{datos.nombre}", class="campos2")
+					tr
+						td
+							font(size="4")	Email:
+						td
+							input(id="update_correo", name="update_correo", type="text", value="#{datos.correo}", class="campos2")
+					tr
+						td
+							font(size="4")	Telefono:
+						td
+							input(id="update_phone", name="update_phone", type="text", value="#{datos.telefono}", class="campos2")
+					tr
+						td
+							font(size="6")	Direccion:
+					tr
+						td
+							font(size="4")	Estado:
+						td
+							input(id="update_estado", name="update_estado", type="text", value="#{datos.estado}", class="campos2")
+					tr
+						td
+							font(size="4")	Ciudad:
+						td
+							input(id="update_ciudad", name="update_ciudad", type="text", value="#{datos.ciudad}", class="campos2")
+					tr
+						td
+							font(size="4")	Codigo Postal:
+						td
+							input(id="update_postal", name="update_postal", type="text", value="#{datos.codigo_postal}", class="campos2")
+					tr
+						td
+							font(size="4")	Direccion:
+						td
+							textarea(id="update_direccion", name="update_direccion", rows="3", cols="28", class="campos2")	#{datos.direccion}
+			<br />
+			.button_wrapper
+				.button_underneath
+					input(id="btn_update_enviar", type="submit", value="Actualizar", class="button")
+		<br /><br /><br /><br /><br />
+		#registrar_error.font_error	Debe completar los datos requeridos

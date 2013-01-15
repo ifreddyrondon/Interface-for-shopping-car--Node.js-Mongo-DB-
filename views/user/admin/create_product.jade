@@ -1,55 +1,54 @@
-.big_container
-	.botonera
-		.button_wrapper
-			.button_underneath.button_underneath_2
-				a(href="#product", class="button", style="width: 117px") Regresar
-	.big_contenido(align="center")
-		#product(align="center", class="font")
-			br
-			font(size="6", class="titulo")	Nuevo Producto		
-		form(id="form-create_product", enctype="multipart/form-data")
-			br
-			div
-				table
-					tr
-						td
-							font(size="5", class="font")	Nombre:
-						td
-							input(id="create_product_nombre", name="create_product_nombre", type="text", value="", class="campos2")
-					tr
-						td
-							font(size="5", class="font")	Cantidad:
-						td
-							input(id="create_product_cantidad_inicial", name="create_product_cantidad_inicial", type="text", value="", class="campos2")
-					tr
-						td
-							font(size="5", class="font")	Peso:
-						td
-							input(id="create_product_peso", name="create_product_peso", type="text", value="", class="campos2")
-					tr
-						td
-							font(size="5", class="font")	Tamaño:
-						td
-							input(id="create_product_tamano", name="create_product_tamano", type="text", value="", class="campos2")
-					tr
-						td
-							font(size="5", class="font")	Precio:
-						td
-							input(id="create_product_precio", name="create_product_precio", type="text", value="", class="campos2")
-					tr
-						td
-							font(size="5", class="font")	Descripcion:
-						td
-							textarea(id="create_product_descripcion", name="create_product_descripcion", rows="4", cols="28", class="campos2")
-					tr
-						td(colspan="2")
-							input(type="file", name="photoimg", id="photoimg", style="pointer-events: auto;")
-			br
-			.button_wrapper(align="center")
-				.button_underneath
-					input(id="btn_crear_producto_enviar", type="submit", value="Crear", class="button")
+.botonera
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#product", class="button", style="width: 117px") Regresar
+.big_contenido(align="center")
+	#product(align="center", class="font")
 		br
+		font(size="6", class="titulo")	Nuevo Producto		
+	form(id="form-create_product", enctype="multipart/form-data")
 		br
+		div
+			table
+				tr
+					td
+						font(size="5", class="font")	Nombre:
+					td
+						input(id="create_product_nombre", name="create_product_nombre", type="text", value="", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Cantidad:
+					td
+						input(id="create_product_cantidad_inicial", name="create_product_cantidad_inicial", type="text", value="", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Peso:
+					td
+						input(id="create_product_peso", name="create_product_peso", type="text", value="", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Tamaño:
+					td
+						input(id="create_product_tamano", name="create_product_tamano", type="text", value="", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Precio:
+					td
+						input(id="create_product_precio", name="create_product_precio", type="text", value="", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Descripcion:
+					td
+						textarea(id="create_product_descripcion", name="create_product_descripcion", rows="4", cols="28", class="campos2")
+				tr
+					td(colspan="2")
+						input(type="file", name="photoimg", id="photoimg", style="pointer-events: auto;")
 		br
-		br
-		.error_datos_create_product.font_error	Debe completar los datos requerios
+		.button_wrapper(align="center")
+			.button_underneath
+				input(id="btn_crear_producto_enviar", type="submit", value="Crear", class="button")
+	br
+	br
+	br
+	br
+	.error_datos_create_product.font_error	Debe completar los datos requerios

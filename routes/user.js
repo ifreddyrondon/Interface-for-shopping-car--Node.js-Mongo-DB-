@@ -440,8 +440,8 @@ exports.datos = function(req, res){
 										ciudad: rows2[0]['Ciudad'],
 										direccion: rows2[0]['Direccion'],
 		 								codigo_postal: rows2[0]['Codigo_Postal'],
-								};			
-								res.send(datos);
+								};
+								res.render('user/index_comunes/view_datos', { datos: datos, sesion: req.session.user });			
 				  		}
 				  	});
 		  		}
@@ -461,7 +461,7 @@ exports.datosUpdate = function(req, res){
 		id = sanitize(id).xss();
 		id = sanitize(id).entityDecode();
 		if(id == req.session.user.id)
-			res.send(datos);
+			res.render('user/index_comunes/update_datos', { datos: datos, sesion: req.session.user });			
 		else
 		  console.log("NO ES EL MISMO USUARIO");
 	}
@@ -509,8 +509,7 @@ exports.update = function(req, res){
 									res.end();
 								}
 								else{
-									res.write('/#datos/'+datos.id+'');
-									res.end();
+									res.send('/#datos/'+datos.id+'');
 								}
 						});
 					}
@@ -523,6 +522,9 @@ exports.update = function(req, res){
 		}
 	}
 };
+exports.formPass = function(req, res){
+	res.render('user/index_comunes/update_pass', { sesion: req.session.user });			
+}
 exports.pass = function(req, res){
 	if (req.session.user){
 		pass_old= crypto.createHash('sha256').update(req.body.old_pass_temp).digest("hex");

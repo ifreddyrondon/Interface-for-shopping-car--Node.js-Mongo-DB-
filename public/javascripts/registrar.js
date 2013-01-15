@@ -79,21 +79,8 @@ $(document).ready(function() {
 		$("#registrar_nombre").css("background","none");		
 		$("#registrar_nombre").css("background-color","#FFFFFF");			 		
 	});
-	$("#registrar_nombre").blur(function(){
-		var valSpaces =$("#registrar_nombre").val();
-		valSpaces = $.trim( valSpaces );
-	
-		if (valSpaces==''){	
-			$("#registrar_nombre").val('Nombre completo');
-			$("#registrar_nombre").css('color','#bbbbbb');
-			$("#registrar_nombre").css("background","url('images/warning.png') no-repeat right center");
-			$("#registrar_nombre").css("background-color","#FFFFFF");
-			$("#registrar_nombre").tipTip({delay: "100", content: "<font class='registrar_tip' size='2px'>debe colocar un Nombre</font>"});
-		}
-		else {
-			$("#registrar_nombre").tipTip({delay: "100", content: "Correcto!!"});
-		} 		
-	});
+	$(document).on("blur","#registrar_nombre",function(){validator("empty",$(this).attr('id'))});
+
 	$("#registrar_correo").focus(function(){
 		$("#registrar_correo").val('');
 		$("#registrar_correo").css('color','#000000');

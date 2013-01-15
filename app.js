@@ -48,6 +48,7 @@ app.post('/pictures/default', user.pictureDefault);
 app.post('/datos', user.datos);
 app.post('/user/datos', user.datosUpdate);
 app.post('/user/datos/update', user.update);
+app.post('/user/datos/formpass', user.formPass);
 app.post('/user/datos/pass', user.pass);
 //ADMIN
 app.post('/admin/product', admin.product);

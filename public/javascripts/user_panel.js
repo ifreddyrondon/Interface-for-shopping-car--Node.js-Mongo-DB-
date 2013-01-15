@@ -27,76 +27,17 @@ $(document).ready(function() {
 		'datos/:id': function(id){
 			picIzq();
 			hideUserPanel();
-			$("#btn_update").show();
-			$("#update_regresar").hide();
-			$("#datos_pass").hide();
-			$("#update_datos").show();
-			$("#update_clave").show();
-			$("#datosUpdate_container").hide();
-			$("#datos_container").show();
-			$.ajax({
-      	type: "POST",
-				url: "/datos",
-        data:'id='+id,
-	      beforeSend: function(){
-				 	$("#bowlG").show();
-				},
-        success: function( datos ){
-	        $("#bowlG").hide();
-	        if(datos == '1'){
-		        alert("PROBLEMA");
-	        }
-        	else {
-        		$("#datos_container").hide().html('<br /><br /><br /><table cellpadding="4"><tr><td class="font_w"><font size="4">Usuario:</td><td><font size="5">'+datos.user+'</font></td></tr><tr><td class="font_w"><font size="4">Nombre:</font></td><td><font size="5">'+datos.nombre+'</font></td></tr><tr><td class="font_w"><font size="4">Email:</font></td><td><font size="5">'+datos.correo+'</font></td></tr><tr><td class="font_w"><font size="4">Telefono:</font></td><td><font size="5">'+datos.telefono+'</font></td></tr><tr><td class="font_w"><font size="4">Estado:</font></td><td><font size="5">'+datos.estado+'</font></td></tr><tr><td class="font_w"><font size="4">Ciudad:</font></td><td><font size="5">'+datos.ciudad+'</font></td></tr><tr><td class="font_w"><font size="4">Direccion:</font></td><td><font size="5">'+datos.direccion+'</font></td></tr><tr><td class="font_w"><font size="4">Codigo Postal:</font></td><td><font size="5">'+datos.codigo_postal+'</font></td></tr></table>').show();	
-        		$('#datos').show();
-					}
-				}
-			});	
+			ajaxNormal("/datos","id="+id);
 		},
 		'user/datos/update/:id': function(id){
 			picIzq();
 			hideUserPanel();
-			$("#datos_container").hide();
-			$("#btn_update").show();
-			$("#datos_pass").hide();
-			$("#update_datos").hide();
-			$("#update_clave").show();
-			$("#update_regresar").show();
-			$("#datosUpdate_container").show();
-			$("#datos_container").hide();
-			$.ajax({
-      	type: "POST",
-				url: "/user/datos",
-        data:'id='+id,
-	      beforeSend: function(){
-				 	$("#bowlG").show();
-				},
-        success: function( datos ){
-	        $("#bowlG").hide();
-        	if(datos){
-        		$('#datos').show();
-        		$('#update_nombre').val(datos.nombre);
-        		$('#update_correo').val(datos.correo);
-        		$('#update_phone').val(datos.telefono);
-        		$('#update_estado').val(datos.estado);
-        		$('#update_ciudad').val(datos.ciudad);
-        		$('#update_postal').val(datos.codigo_postal);
-        		$('#update_direccion').val(datos.direccion);
-					}
-				}
-			});
+			ajaxNormal("/user/datos","id="+id);
 		},
 		'pass': function(){
 			picIzq();
 			hideUserPanel();
-			$('#datos').show();
-			$("#btn_update").show();
-			$("#update_regresar").show();
-			$("#datos_pass").show();
-			$("#update_datos").show();
-			$("#update_clave").hide();
-			$("#datosUpdate_container").hide();
-			$("#datos_container").hide();
+			ajaxNormal("/user/datos/formpass");
 		},
 	});
 	$("#user_panel_tap_mini").click(function(){

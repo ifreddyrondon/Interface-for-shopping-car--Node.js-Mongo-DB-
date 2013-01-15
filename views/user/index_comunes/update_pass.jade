@@ -1,0 +1,46 @@
+.botonera
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#datos/#{sesion.id}", class="button", style="width: 118px") Regresar
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#user/datos/update/#{sesion.id}", class="button", style="width: 118px") Actualizar datos
+.big_contenido(align="center")
+	div(align="center", class="font")
+		font(size="6", class="titulo")	Cambiar Clave
+	#datos_pass(align="center")
+		br
+		br
+		form(id="form-pass")
+			div(class="font")
+				table
+					tr
+						td
+							font(size="5")	Clave Actual:
+						td
+							input(id="old_pass_temp", name="old_pass_temp", type="password", value="", class="campos2")
+					tr
+						td
+							font(size="5")	Clave Nueva:
+						td
+							input(id="new_pass_temp", name="new_pass_temp", type="password", value="", class="campos2")
+					tr
+						td
+							font(size="5")	Repita Clave:
+						td
+							input(id="repeat_new_pass_temp", name="repeat_new_pass_temp", type="password", value="", class="campos2")
+			br
+			br
+			.button_wrapper
+				.button_underneath
+					input(id="btn_update_pass", type="submit", value="Actualizar", class="button")
+		br
+		br
+		br
+		br
+		br	
+		.error_clave.font_error	La Clave debe contener almenos 6 caracteres
+		.error_clave_faltan.font_error	Debe completar los datos requeridos
+		.error_clave_incorrecta.font_error	Su Clave es incorrecta
+		.error_clave_error.font_error	A ocurrido un error, por favor intentelo de nuevo en un momento
+		.error_clave_coinciden.font_error	La Clave nueva no coincide 

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 //Ppal Validados-------------------------------------------------------
-	function validator(funciones,id){
-		if (validar(funciones,id)){
+	function validator(funciones,id,min){
+		if (validar(funciones,id,min)){
 			document.getElementById(id).style.backgroundImage="url('images/check.png')";
 	  	document.getElementById(id).style.backgroundRepeat="no-repeat";
 	  	document.getElementById(id).style.backgroundPosition="right center";
@@ -14,11 +14,12 @@ $(document).ready(function(){
 	  	return false;
 		}
 	}
-	function validar(funciones,id){
+	function validar(funciones,id,min){
 		empty = true;
 		number = true;
 		formatoImagen = true;
 	  correo = true;
+	  minimo = true;
 		funciones = funciones.split(',');
 		for(i=0;i<funciones.length;i++){
 			if(funciones[i]=='empty')
@@ -29,11 +30,13 @@ $(document).ready(function(){
 				number = formatImage(document.getElementById(id));
 			if(funciones[i]=='CorreoAvailability')
 				correo = CorreoAvailability(document.getElementById(id));		
+			if(funciones[i]=='min')
+				minimo = minChar(document.getElementById(id),min);		
 		}
-		return empty && number && formatoImagen && correo;	
+		return empty && number && formatoImagen && correo && minimo;	
 	}
   window.validator=validator;
-//Funciones-validadoras------------------------------------------------
+//Funciones-validadoras--------------------------------------------------------------------
 	function IsEmpty(el){
 	  if(el.value == '')
 	  	return false;
@@ -50,6 +53,12 @@ $(document).ready(function(){
 			return false;
 		else
 			return true;  
+  }
+  function minChar(el,min){
+	  if(el.value.length < min)
+	  	return false;
+	  else 
+		  return true;
   }
   function validaCorreo(valor) {
 		var expresion = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -82,11 +91,12 @@ $(document).ready(function(){
 		else 
 			return false;	
 	}
-//----AJAX-----------------------------------------------------------
-	function ajaxNormal(url){
+//----AJAX----------------------------------------------------------------------------------
+	function ajaxNormal(url,datos){
 		$.ajax({
 	  	type: 'POST',
 			url: url,
+			data: datos,
 	    beforeSend: function(){
 			 	$("#bowlG").show();
 			},
@@ -115,6 +125,23 @@ $(document).ready(function(){
 			}
 		});
 	}
+	function ajaxDatosReload(url,id){
+		$(document.getElementById(id)).ajaxForm({
+	  	type: 'POST',
+			url: url,
+	    beforeSend: function(){
+			 	$("#bowlG").show();
+			},
+	    success: function(res){
+	    	$("#bowlG").hide();
+	    	if (res == '1')
+	      	alert("error");
+	    	else 
+	        window.location = res;
+			}
+		});
+	}
 	window.ajaxNormal=ajaxNormal;	
 	window.ajaxDatos=ajaxDatos;	
+	window.ajaxDatosReload=ajaxDatosReload;	
 });

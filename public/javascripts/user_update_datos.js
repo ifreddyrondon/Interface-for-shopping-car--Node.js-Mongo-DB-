@@ -5,85 +5,22 @@ $(document).ready(function() {
 		var correo_old = $("#update_correo").val();
 	});
 	$(document).on("blur", "#update_correo", function() { validator("CorreoAvailability",$(this).attr('id'))  });
-	
-	$("#btn_update_enviar").click(function(){
-		if(validator("CorreoAvailability","update_correo")){
+	$(document).on("click", "#btn_update_enviar", function(){
+		if(validator("CorreoAvailability","update_correo")==false){
 			$("#registrar_error").show();	
 			return false;
 		}
 		else {
 			$("#registrar_error").hide();	
-			$("#form-update").ajaxForm({
-				type: "POST",
-				url: "/user/datos/update",
-				beforeSend: function(){
-					$("#bowlG").show();
-				},
-				success: function(datos){
-					$("#bowlG").hide();
-		      if(datos == '1'){
-			    	alert("PROBLEMA");
-		      }
-		      else {
-		      	window.location = datos;
-		      }
-				}
-			});
+			ajaxDatosReload("/user/datos/update","form-update");
 		}
 	});
-	$("#old_pass").keypress(function(){
-		$("#old_pass").hide();
-    $("#old_pass_temp").show();
-    $("#old_pass_temp").focus();
-    $("#old_pass").val('');		
-	});
-	$("#old_pass_temp").blur(function(){
-		if ($("#old_pass_temp").val()==''){
-			$("#old_pass_temp").hide();
-      $("#old_pass").show();    	
-			$("#old_pass").val('Clave');
-		} 			
-		if ($("#old_pass_temp").val().length < 6){
-			$(".error_clave").show();    			
-			$("#old_pass").val('Clave');
-		}
-	});
-	$("#new_pass").keypress(function(){
-		$("#new_pass").hide();
-    $("#new_pass_temp").show();
-    $("#new_pass_temp").focus();
-    $("#new_pass").val('');		
-	});
-	$("#new_pass_temp").blur(function(){
-		if ($("#new_pass_temp").val()==''){
-			$("#new_pass_temp").hide();
-      $("#new_pass").show();    	
-			$("#new_pass").val('Nueva clave');
-		} 			
-		if ($("#new_pass_temp").val().length < 6){
-			$(".error_clave").show();    			
-			$("#new_pass").val('Nueva clave');
-		}
-	});
-	$("#repeat_new_pass").keypress(function(){
-		$("#repeat_new_pass").hide();
-    $("#repeat_new_pass_temp").show();
-    $("#repeat_new_pass_temp").focus();
-    $("#repeat_new_pass").val('');		
-	});
-	$("#repeat_new_pass_temp").blur(function(){
-		if ($("#repeat_new_pass_temp").val()==''){
-			$("#repeat_new_pass_temp").hide();
-      $("#repeat_new_pass").show();    	
-			$("#repeat_new_pass").val('Repita la clave');
-		} 			
-		if ($("#repeat_new_pass_temp").val().length < 6){
-			$(".error_clave").show();    			
-			$("#repeat_new_pass").val('Repita la clave');
-		}
-	});
-	$("#btn_update_pass").click(function(){
-		if($("#old_pass").val()=='Clave' || $("#new_pass").val()=='Nueva clave' || $("#repeat_new_pass").val()=='Repita la clave'){
+	$(document).on("blur","#old_pass_temp",function(){validator("empty,min",$(this).attr('id'),6)});
+	$(document).on("blur","#new_pass_temp",function(){validator("empty,min",$(this).attr('id'),6)});
+	$(document).on("blur","#repeat_new_pass_temp",function(){validator("empty,min",$(this).attr('id'),6)});
+	
+	$(document).on("click", "#btn_update_pass", function() {
+		if(validator("empty","old_pass_temp")==false || validator("empty","new_pass_temp")==false || validator("empty","repeat_new_pass_temp")==false){
 			$(".error_clave").hide();    			
 			$(".error_clave_faltan").show();	
 			return false;
@@ -108,18 +45,14 @@ $(document).ready(function() {
 				},
 				success: function(datos){
 					$("#bowlG").hide();
-		      if(datos == '1'){
+		      if(datos == '1')
 			    	$(".error_clave_error").show(); 
-		      }
-		      if(datos == '2'){
+		      if(datos == '2')
 			    	$(".error_clave_incorrecta").show(); 
-		      }
-		      if(datos == '3'){
+		      if(datos == '3')
 			    	$(".error_clave_coinciden").show(); 
-		      }
-		      else {
+		      else 
 		      	window.location = datos;
-		      }
 				}
 			});
 		}
