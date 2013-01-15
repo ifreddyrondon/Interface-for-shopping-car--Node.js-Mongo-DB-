@@ -40,5 +40,4 @@
 .parent3 {height: 45px;color: #fff;background: rgba(0, 0, 0, .5);
   -webkit-transition-property: all;-webkit-transition-duration: 1s;-webkit-transform: rotateX(-90deg);-webkit-transform-origin: top;-moz-transition-property: all;-moz-transition-duration: 1s;-moz-transform: rotateX(-90deg);-moz-transform-origin: top;-o-transition-property: all;-o-transition-duration: 1s;-o-transform: rotateX(-90deg);-o-transform-origin: top;transition-property: all;transition-duration: 1s;transform: rotateX(-90deg);transform-origin: top;}
 #user_picture_img:hover .parent1 { height: 50px; }
-#user_picture_img:hover .parent3 {pointer-events: auto;-webkit-transform: rotateX(0deg);-moz-transform: rotateX(0deg);-o-transform: rotateX(0deg);transform: rotateX(0deg);
-  height: 111px;}
+#user_picture_img:hover .parent3 {pointer-events: auto;-webkit-transform: rotateX(0deg);-moz-transform: rotateX(0deg);-o-transform: rotateX(0deg);transform: rotateX(0deg);height: 111px;}
