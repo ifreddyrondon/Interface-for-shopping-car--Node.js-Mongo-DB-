@@ -13,7 +13,7 @@ $(document).ready(function() {
 			$("#registrar_error").hide();	
 			ajaxDatosReload("/user/datos/update","form-update");
 		}
-	});
+	});	
 	$(document).on("blur","#old_pass_temp",function(){validator("empty,min",$(this).attr('id'),6)});
 	$(document).on("blur","#new_pass_temp",function(){validator("empty,min",$(this).attr('id'),6)});
 	$(document).on("blur","#repeat_new_pass_temp",function(){validator("empty,min",$(this).attr('id'),6)});
