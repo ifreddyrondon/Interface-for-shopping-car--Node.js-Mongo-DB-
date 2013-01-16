@@ -698,13 +698,13 @@
                 switch( event.keyCode ) {
                     case 33: // pg up
                     //case 37: // left
-                    case 38: // up
+                    //case 38: // up
                              api.prev();
                              break;                  
                     //case 32: // space
                     case 34: // pg down
                     //case 39: // right
-                    case 40: // down
+                    //case 40: // down
                              api.next();
                              break;
                 }

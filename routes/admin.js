@@ -1,4 +1,6 @@
-var	BD = require('../BD');
+var	BD = require('../BD')
+	, sanitize = require('validator').sanitize
+	, check = require('validator').check;
 	
 exports.product = function(req, res){
 	if(req.session.user.tipo == 'a'){
@@ -28,7 +30,65 @@ exports.productCreate = function(req, res){
 }
 exports.productCreateSend = function(req, res){
 	if(req.session.user.tipo == 'a'){
-		console.log(req.body.create_product_nombre);
+		db = BD.mongodb();
+		var producto_schema = require('../models/producto')
+  		, Producto = db.model('Producto', producto_schema);
+  
+	try {
+    check(req.body.create_product_nombre).notNull();
+	  check(req.body.create_product_cantidad_inicial).notNull().isInt();
+	  check(req.body.create_product_peso).notNull().isFloat();
+	  check(req.body.create_product_tamano).notNull().isFloat();
+	  check(req.body.create_product_precio).notNull().isFloat();
+	  check(req.body.create_product_descripcion).notNull();
+	  
+		nombre_producto = sanitize(req.body.create_product_nombre).xss();
+		nombre_producto = sanitize(nombre_producto).entityDecode();
+		
+		cantidad_inicial = sanitize(req.body.create_product_cantidad_inicial).trim(); 	
+		cantidad_inicial = sanitize(cantidad_inicial).xss();
+		cantidad_inicial = sanitize(cantidad_inicial).entityDecode();
+		
+		peso_producto = sanitize(req.body.create_product_peso).trim(); 	
+		peso_producto = sanitize(peso_producto).xss();
+		peso_producto = sanitize(peso_producto).entityDecode();
+		
+		tamano_producto = sanitize(req.body.create_product_tamano).trim(); 	
+		tamano_producto = sanitize(tamano_producto).xss();
+		tamano_producto = sanitize(tamano_producto).entityDecode();
+		
+		precio_producto = sanitize(req.body.create_product_precio).trim(); 	
+		precio_producto = sanitize(precio_producto).xss();
+		precio_producto = sanitize(precio_producto).entityDecode();
+		
+		descripcion_producto = sanitize(req.body.create_product_descripcion).xss();
+		descripcion_producto = sanitize(descripcion_producto).entityDecode();
+		
+		var producto = new Producto({
+    	titulo						: 	nombre_producto,
+		  summary						: 	nombre_producto,
+		  descripcion				:		descripcion_producto,
+		  precio						: 	precio_producto,
+		  peso							: 	peso_producto,
+		  tamano						: 	tamano_producto,
+		  cantidad_inicial	:  	cantidad_inicial,
+		  cantidad_restante	:  	cantidad_inicial,
+		  publicado					:		false,
+		  disponibilidad		:		true,
+    });
+		producto.save(function(err,room) {
+    	if (err) res.send('1');
+		  else {
+		  	console.log(room.id);
+			}
+		});
+	} catch (e) {
+	  res.send('1');
+	  console.log(e.message);
+	}	
+
+
+  
 	}
 	else
 		console.log("No tienes los permisos suficientes");	
