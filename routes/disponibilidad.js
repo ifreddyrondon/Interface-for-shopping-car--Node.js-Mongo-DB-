@@ -14,14 +14,8 @@ exports.disponibilidad = function(req, res){
 		function(err, rows, fields) {
 	    if (err) throw err;
 	    else {
-		    if (rows.length > 0){
-			    res.write('1');
-			    res.end();
-		    }
-		    else{
-			    res.write('0');
-			    res.end();
-		    }
+		    if (rows.length > 0)	res.send('1');
+		    else	res.send('0');
 	    }
 	  });
 	}
@@ -33,14 +27,8 @@ exports.disponibilidad = function(req, res){
 		function(err, rows, fields) {
 	    if (err) throw err;
 	    else {
-		    if (rows.length > 0){
-			    res.write('1');
-			    res.end();
-		    }
-		    else{
-			    res.write('0');
-			    res.end();
-		    }
+		    if (rows.length > 0)	res.send('1');
+		    else	res.send('0');
 	    }
 	  });
 	}
@@ -52,14 +40,8 @@ exports.disponibilidad = function(req, res){
 		function(err, rows, fields) {
 	    if (err) throw err;
 	    else {
-		    if (rows.length > 0){
-			    res.write('1');
-			    res.end();
-		    }
-		    else{
-			    res.write('0');
-			    res.end();
-		    }
+		    if (rows.length > 0)	res.send('1');
+		    else	res.send('0');
 	    }
 	  });
 	}

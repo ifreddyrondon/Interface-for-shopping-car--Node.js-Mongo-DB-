@@ -6,6 +6,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , gzippo = require('gzippo')
+  , alluser = require('./routes/alluser')
   , user = require('./routes/user')
   ,	admin = require('./routes/admin')
   , disponibilidad = require('./routes/disponibilidad')
@@ -54,6 +55,8 @@ app.post('/user/datos/pass', user.pass);
 app.post('/admin/product', admin.product);
 app.post('/admin/product/create', admin.productCreate);
 app.post('/admin/product/createSend', admin.productCreateSend);
+//PRODUCT
+app.post('/product/view', alluser.product);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

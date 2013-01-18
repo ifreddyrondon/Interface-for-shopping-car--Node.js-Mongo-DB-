@@ -1,4 +1,5 @@
 var	BD = require('../BD')
+	,	fs = require('fs')
 	, sanitize = require('validator').sanitize
 	, check = require('validator').check;
 	
@@ -8,10 +9,7 @@ exports.product = function(req, res){
 		objBD.connect();	
 		objBD.query("SELECT ID_Producto, Nombre_Producto, Precio, Cantidad_Inicial, Cantidad_Restante FROM producto",  	
 			function(err, rows, fields) {  	
-				if (err){
-			  	res.write('1');
-				  res.end();
-			  }
+				if (err)	res.send('1');
 			  else {
 				  res.render('user/admin/view_productos', { hola: rows });
 			  }
@@ -76,8 +74,29 @@ exports.productCreateSend = function(req, res){
 	    });
 			producto.save(function(err,room) {
 	    	if (err) res.send('1');
-			  else {
-			  	console.log(room.id);
+			  else {			  	
+			  	tmp_path = req.files.photoimg_product.path;
+			  	if (req.files.photoimg_product.size > 2097152)
+						res.send('1');
+					else{		
+				    target_path = "public/images/products/"+room.id+".jpg";
+				    fs.rename(tmp_path, target_path, function(err) {
+				        if (err)
+					        res.send('1');
+				        else {
+					        fs.unlink(tmp_path, function() {
+						        if (err) 
+						      		res.send('1');      
+					          else {
+					          	fs.chmodSync(target_path, 0777);
+					          	res.send('/#product/view/'+room.id+'');
+					          }
+					        });
+					      }
+				    });
+				   }
+			  	
+			  	
 				}
 			});
 		} catch (e) {

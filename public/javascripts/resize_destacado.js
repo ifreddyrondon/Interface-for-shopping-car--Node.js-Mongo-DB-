@@ -1,3 +1,11 @@
+$(document).ready(function(){
+	routie({
+		'product/view/:id': function(id){
+			ajaxNormal("/product/view","id="+id);
+		},
+	});
+});
+//----RESIZE----------------------//
 $(window).load(function(){    
 	var pageWindow = $(window);var windowDiv = $("#windowDiv");var contenido = $(".contenido");
 	var user_container = $(".user_container");
