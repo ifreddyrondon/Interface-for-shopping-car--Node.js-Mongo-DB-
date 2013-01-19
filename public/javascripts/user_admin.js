@@ -3,7 +3,7 @@ $(document).ready(function(){
 		'product': function(){
 			picIzq();
 			hideUserPanel();
-			ajaxNormal("/admin/product");
+			ajaxNormal("/productos");
 		},
 		'product/create': function(){
 			picIzq();

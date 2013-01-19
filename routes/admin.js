@@ -1,24 +1,10 @@
 var	BD = require('../BD')
 	,	fs = require('fs')
+	, gm = require('gm')
+	, imageMagick = gm.subClass({ imageMagick: true })
 	, sanitize = require('validator').sanitize
 	, check = require('validator').check;
 	
-exports.product = function(req, res){
-	if(req.session.user.tipo == 'a'){
-		objBD = BD.BD();
-		objBD.connect();	
-		objBD.query("SELECT ID_Producto, Nombre_Producto, Precio, Cantidad_Inicial, Cantidad_Restante FROM producto",  	
-			function(err, rows, fields) {  	
-				if (err)	res.send('1');
-			  else {
-				  res.render('user/admin/view_productos', { hola: rows });
-			  }
-			});
-		objBD.end();
-	}
-	else
-		console.log("No tienes los permisos suficientes");	
-}
 exports.productCreate = function(req, res){
 	if(req.session.user.tipo == 'a'){
 		res.render('user/admin/create_product');
@@ -76,27 +62,42 @@ exports.productCreateSend = function(req, res){
 	    	if (err) res.send('1');
 			  else {			  	
 			  	tmp_path = req.files.photoimg_product.path;
-			  	if (req.files.photoimg_product.size > 2097152)
-						res.send('1');
+			  	if (req.files.photoimg_product.size > 2097152)	res.send('1');
 					else{		
-				    target_path = "public/images/products/"+room.id+".jpg";
-				    fs.rename(tmp_path, target_path, function(err) {
-				        if (err)
-					        res.send('1');
+				    target_path = "public/images/products/"+room.id;
+				    fs.rename(tmp_path, target_path+".jpg", function(err) {
+				        if (err)	res.send('1');
 				        else {
 					        fs.unlink(tmp_path, function() {
-						        if (err) 
-						      		res.send('1');      
+						        if (err) res.send('1');      
 					          else {
-					          	fs.chmodSync(target_path, 0777);
-					          	res.send('/#product/view/'+room.id+'');
+					          	imageMagick(target_path+".jpg")
+									  	.resize(500,500)
+									  	.write(target_path+".big.jpg", function (err) {
+											  if (err) res.send('1'); 
+											  else {
+											  	imageMagick(target_path+".big.jpg")
+											  	.resize(100,100)
+											  	.write(target_path+".min.jpg", function (err) {
+													  if (err) res.send('1'); 
+													  else {
+													  	fs.unlink(target_path+".jpg", function() {
+												        if (err) res.send('1');      
+											          else {
+											          	fs.chmodSync(target_path+".big.jpg", 0777);
+											          	fs.chmodSync(target_path+".min.jpg", 0777);
+											          	res.send('/#product/view/'+room.id+'');
+											          }
+											        });
+													  }
+													});
+											  }
+											});
 					          }
 					        });
 					      }
 				    });
-				   }
-			  	
-			  	
+				   }	
 				}
 			});
 		} catch (e) {

@@ -10,10 +10,13 @@
 	br
 	-for (var i=0; i<hola.length; i++)
 		.productos_individual(onclick="location.href='#product/view/#{hola[i]['ID_Producto']}'")	
-			table
+			table(cellpadding="3")
+				tr
+					td(rowspan="3")
+						img(src="images/products/#{hola[i].id}.min.jpg")
 				tr
 					td
-						h3	#{hola[i]['Nombre_Producto']} 
+						h3	#{hola[i].titulo} 
 				tr(class="font")
-					td	#{hola[i]['Precio']} 
-					td(align="right")	[#{hola[i]['Cantidad_Inicial']},#{hola[i]['Cantidad_Restante']}]
+					td	#{hola[i].precio} 
+					td(align="right")	[#{hola[i].cantidad_inicial},#{hola[i].cantidad_restante}]

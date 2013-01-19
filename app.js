@@ -52,10 +52,10 @@ app.post('/user/datos/update', user.update);
 app.post('/user/datos/formpass', user.formPass);
 app.post('/user/datos/pass', user.pass);
 //ADMIN
-app.post('/admin/product', admin.product);
 app.post('/admin/product/create', admin.productCreate);
 app.post('/admin/product/createSend', admin.productCreateSend);
 //PRODUCT
+app.post('/productos', alluser.productos);
 app.post('/product/view', alluser.product);
 
 http.createServer(app).listen(app.get('port'), function(){
