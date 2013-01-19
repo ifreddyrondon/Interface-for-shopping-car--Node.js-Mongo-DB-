@@ -75,16 +75,7 @@ li { list-style: none }
   .button_underneath_2 { padding-top: 10; width: 120px }
 .button_underneath.blue {	background: #015691 }.button_underneath.orange {	background: #916701	}.button_underneath.grey {	background: #bfbfbf	}
 /*-----CAMPOS-----------------*/
-.campos{
-	height:33px;width:210px;
-	background-color:#ffffff;
-	color: #bbbbbb;
-	font-size: 14px;
-	padding-left:4px;
-	border-style:groove;
-	border-width:1px;
-	outline:none;
-	font-family: monospace;	}
+.campos{height:33px;width:210px;background-color:#ffffff;color: #bbbbbb;font-size: 14px;padding-left:4px;border-style:groove;border-width:1px;outline:none;font-family: monospace;	}
 .campos_border{	border-left-color:#000000;	border-right-color:#000000;}
 .busqueda{background: url(../images/search-white.png) no-repeat 10px 6px #444444;}
 .busqueda:focus {background: url(../images/search-dark.png) no-repeat 10px 6px #fcfcfc;}

@@ -28,9 +28,13 @@ $(window).load(function(){
 //----DESTACADO-------------//
 $(document).ready(function() {
 	routie({
-		
+		'product/view/:id': function(id){
+			$(".user_container").css("width",$(window).width()-90);
+			$("#user_panel_contenido").hide();
+			$("#user_picture_img").hide();
+			ajaxNormal("/product/view","id="+id);
+		},
 	});
-
 	$("#start").click(function(){destacadoClick($(this).attr('id'),"women,men,children")});
 	$("#women").click(function(){destacadoClick($(this).attr('id'),"start,men,children")});
 	$("#men").click(function(){destacadoClick($(this).attr('id'),"start,women,children")});
@@ -93,5 +97,4 @@ $(document).ready(function() {
 			$(this).closest("li").remove();
 		});
 	});
-	//--------Funciones de panel------------------------//
 });

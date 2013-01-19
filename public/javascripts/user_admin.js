@@ -9,11 +9,6 @@ $(document).ready(function(){
 			picIzq();
 			hideUserPanel();
 			ajaxNormal("/productos");
-		},
-		'product/view/:id': function(id){
-			hideUserPanel();
-			$("#user_picture_img").hide();
-			ajaxNormal("/product/view","id="+id);
 		},	
 	});
 	$(document).on("blur","#create_product_nombre",function(){validator("empty",$(this).attr('id'))});

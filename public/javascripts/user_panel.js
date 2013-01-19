@@ -42,7 +42,7 @@ $(document).ready(function() {
 	});
 	$("#user_panel_tap_mini").click(function(){
 		$(".user_container").show();
-		if ($("#logout").css("display") == "none")
+		if($("#logout").css("display") == "none")
 			$(".user_container").css("width",pageWindow.width()-90);
 		else
 			$(".user_container").css("width","235px");
@@ -103,8 +103,9 @@ $(document).ready(function() {
 		$("#user_panel_picture_atras").show();
 	}
 	function picIzq(){
+		$("#user_picture_img").show();
 		$("#user_picture_img").css("position","absolute");
-		$("#user_picture_img").css("left","18px");
+		$("#user_picture_img").css("left","20px");
 		$("#user_picture_img").css("top","20px");
 	}
 	window.picIzq=picIzq;
