@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	routie({
 		'product/view/:id': function(id){
+			hideUserPanel();
 			ajaxNormal("/product/view","id="+id);
 		},
 	});
@@ -34,99 +35,30 @@ $(window).load(function(){
 });
 //----DESTACADO-------------//
 $(document).ready(function() {
-	var women = $("#women");var men = $("#men");var children = $("#children");
-	$("#start").click(function(){
-		women.css("font-weight","100");
-		men.css("font-weight","100");
-		children.css("font-weight","100");
-		
-		$("#start").css("color","#000000");
-		women.css("color","#ffffff");
-		men.css("color","#ffffff");
-		children.css("color","#ffffff");
-		
-		$("#start_menu").show();
-		$("#women_menu").hide();
-		$("#men_menu").hide();
-		$("#children_menu").hide();		
-	});
-	$("#start").mouseover(function(){
-		$("#start").css("color","#000000");	
-	});
-	$("#start").mouseout(function(){
-		if ($("#start_menu").css("display") == "none"){
-			$("#start").css("color","#ffffff");		
-		}	
-	});
-	women.click(function(){
-		women.css("font-weight","bold");
-		men.css("font-weight","100");
-		children.css("font-weight","100");
-		
-		women.css("color","#000000");
-		$("#start").css("color","#ffffff");
-		men.css("color","#ffffff");
-		children.css("color","#ffffff");
-		
-		$("#women_menu").show();
-		$("#start_menu").hide();
-		$("#men_menu").hide();
-		$("#children_menu").hide();
-	});
-	women.mouseover(function(){
-		women.css("color","#000000");	
-	});
-	women.mouseout(function(){
-		if ($("#women_menu").css("display") == "none"){
-			women.css("color","#ffffff");		
-		}
-	});
-	men.click(function(){
-		men.css("font-weight","bold");
-		women.css("font-weight","100");
-		children.css("font-weight","100");
-		
-		men.css("color","#000000");
-		$("#start").css("color","#ffffff");
-		women.css("color","#ffffff");
-		children.css("color","#ffffff");
-		
-		$("#men_menu").show();
-		$("#start_menu").hide();
-		$("#women_menu").hide();
-		$("#children_menu").hide();			
-	});
-	men.mouseover(function(){
-		men.css("color","#000000");	
-	});
-	men.mouseout(function(){
-		if ($("#men_menu").css("display") == "none"){
-			men.css("color","#ffffff");		
-		}
-	});
-	children.click(function(){
-		children.css("font-weight","bold");
-		women.css("font-weight","100");
-		men.css("font-weight","100");
+	$("#start").click(function(){destacadoClick($(this).attr('id'),"women,men,children")});
+	$("#women").click(function(){destacadoClick($(this).attr('id'),"start,men,children")});
+	$("#men").click(function(){destacadoClick($(this).attr('id'),"start,women,children")});
+	$("#children").click(function(){destacadoClick($(this).attr('id'),"start,women,men")});
 	
-		children.css("color","#000000");
-		$("#start").css("color","#ffffff");
-		women.css("color","#ffffff");
-		men.css("color","#ffffff");
-		
-		$("#children_menu").show();
-		$("#start_menu").hide();
-		$("#women_menu").hide();	
-		$("#men_menu").hide();		
-	});
-	children.mouseover(function(){
-		children.css("color","#000000");	
-	});
-	children.mouseout(function(){
-		if ($("#children_menu").css("display") == "none"){
-			children.css("color","#ffffff");		
+	$("#start").mouseover(function(){$("#start").css("color","#000000")});
+	$("#women").mouseover(function(){$("#women").css("color","#000000")});
+	$("#men").mouseover(function(){$("#men").css("color","#000000")});
+	$("#children").mouseover(function(){$("#children").css("color","#000000")});
+	
+	$("#start").mouseout(function(){if($("#start_menu").css("display")=="none")$("#start").css("color","#ffffff")});
+	$("#women").mouseout(function(){if($("#women_menu").css("display")=="none")$("#women").css("color","#ffffff")});
+	$("#men").mouseout(function(){if($("#men_menu").css("display")=="none")$("#men").css("color","#ffffff")});
+	$("#children").mouseout(function(){if($("#children_menu").css("display")=="none")$("#children").css("color","#ffffff")});
+	
+	function destacadoClick(id,otherID){
+		$(document.getElementById(id)).css("color","#000000").css("font-weight","bold");
+		$(document.getElementById(id+"_menu")).show();
+		otherID = otherID.split(',');
+		for(i=0;i<otherID.length;i++){
+			$(document.getElementById(otherID[i])).css("font-weight","100").css("color","#ffffff");	
+			$(document.getElementById(otherID[i]+"_menu")).hide();
 		}
-	});
+	}
 });
 //----Drag&Drop------//
 $(function () {
