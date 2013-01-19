@@ -1,11 +1,3 @@
-$(document).ready(function(){
-	routie({
-		'product/view/:id': function(id){
-			hideUserPanel();
-			ajaxNormal("/product/view","id="+id);
-		},
-	});
-});
 //----RESIZE----------------------//
 $(window).load(function(){    
 	var pageWindow = $(window);var windowDiv = $("#windowDiv");var contenido = $(".contenido");
@@ -35,6 +27,10 @@ $(window).load(function(){
 });
 //----DESTACADO-------------//
 $(document).ready(function() {
+	routie({
+		
+	});
+
 	$("#start").click(function(){destacadoClick($(this).attr('id'),"women,men,children")});
 	$("#women").click(function(){destacadoClick($(this).attr('id'),"start,men,children")});
 	$("#men").click(function(){destacadoClick($(this).attr('id'),"start,women,children")});
@@ -59,42 +55,43 @@ $(document).ready(function() {
 			$(document.getElementById(otherID[i]+"_menu")).hide();
 		}
 	}
-});
-//----Drag&Drop------//
-$(function () {
-	$(".ropa_float").draggable({
-		revert:true,
-		drag:function () {
-			$(this).addClass("active");
-			$(this).closest("#product").addClass("active");
-		},
-		stop:function () {
-			$(this).removeClass("active").closest("#product").removeClass("active");
+	//----Drag&Drop------//
+	$(function () {
+		$(".ropa_float").draggable({
+			revert:true,
+			drag:function () {
+				$(this).addClass("active");
+				$(this).closest("#product").addClass("active");
+			},
+			stop:function () {
+				$(this).removeClass("active").closest("#product").removeClass("active");
+				}
+		});
+		$(".basket").droppable({
+			activeClass:"active",
+			hoverClass:"hover",
+			tolerance:"touch",
+			drop:function (event, ui) {	
+				var basket = $(this),
+				move = ui.draggable,
+				itemId = basket.find("[data-id='" + move.attr("data-id") + "']");
+				if (itemId.html() != null)
+					itemId.find("input").val(parseInt(itemId.find("input").val()) + 1);
+				else {
+					addBasket(basket, move);
+					move.find("input").val(parseInt(move.find("input").val()) + 1);
+				}
 			}
-	});
-	$(".basket").droppable({
-		activeClass:"active",
-		hoverClass:"hover",
-		tolerance:"touch",
-		drop:function (event, ui) {	
-			var basket = $(this),
-			move = ui.draggable,
-			itemId = basket.find("[data-id='" + move.attr("data-id") + "']");
-			if (itemId.html() != null)
-				itemId.find("input").val(parseInt(itemId.find("input").val()) + 1);
-			else {
-				addBasket(basket, move);
-				move.find("input").val(parseInt(move.find("input").val()) + 1);
-			}
+		});
+		function addBasket(basket, move) {
+			basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
+				+ '<span class="name">' + move.find("span").html() + '</span>'
+				+ '<input class="count" value="1" type="text">'
+				+ '<button class="delete">&#10005;</button>');
 		}
+		$(".basket ul li button.delete").live("click", function () {
+			$(this).closest("li").remove();
+		});
 	});
-	function addBasket(basket, move) {
-		basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
-			+ '<span class="name">' + move.find("span").html() + '</span>'
-			+ '<input class="count" value="1" type="text">'
-			+ '<button class="delete">&#10005;</button>');
-	}
-	$(".basket ul li button.delete").live("click", function () {
-		$(this).closest("li").remove();
-	});
+	//--------Funciones de panel------------------------//
 });

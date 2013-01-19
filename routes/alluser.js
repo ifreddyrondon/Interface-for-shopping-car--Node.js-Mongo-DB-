@@ -9,7 +9,7 @@ var Producto = db.model('Producto', producto_schema);
 exports.productos = function(req, res){
 	Producto.find(function(err, productos) {
 		if(err) res.send('1');
-	  else	res.render('user/admin/view_productos', { hola: productos });
+	  else	res.render('index/product/view_productos', { hola: productos });
   });
 }
 
@@ -23,6 +23,7 @@ exports.product = function(req, res){
  	  	if(err) res.send('1');
  	  	else{
 	 	  	console.log(producto.titulo);	
+	 	  	res.render('index/product/producto', { producto: producto, sesion:req.session.user });
  	  	}
     });
 	}

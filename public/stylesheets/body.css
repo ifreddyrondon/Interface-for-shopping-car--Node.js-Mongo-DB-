@@ -23,6 +23,8 @@ li { list-style: none }
 	overflow:hidden;
 	float:left;	}
 /*------PRODUCTO INDIVIDUAL---------------*/
+#producto_img{position:absolute;left:18px;top:0px;}
+.border_corner_img{-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;}
 .productos_individual h3{font: Arial,Helvetica,Sans-serif;color: #d7d7d7;text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);}
 .productos_individual{with:100px;background-color:rgba(101,101,101,0.5);color:#ffffff;padding:0px 6px 0px 6px;float:left;margin:4px;
 	-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
@@ -44,7 +46,10 @@ li { list-style: none }
 #registrar_tap{ right:40px }
 /*--Container REG & LOGIN & USER ACTIONS---------------------*/
 .user_container {position:absolute;top:50px;right:0px;background-image:url(../images/bg_texture_login.jpg);box-shadow: inset 0 0 490px black;display:none;	z-index: 100	}
+.big_contenido{top:20px;left:0px;right:0px; margin:auto;position:absolute;padding-left:240px}
 /*---BOTON---------------------------*/
+.botonera_product{position:absolute;top:340px;left:50px;}
+.botonera{position: absolute;left:35px;top:270px;}
 .button_wrapper {	width: 100%;	float: left	}
 .button, .button_underneath {	font-weight: bold;	font-family: "Lobster", cursive;	font-size: 15px;	}
 .button {background: black;background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #484545), color-stop(100%, #2c2c2b));background-image: -webkit-linear-gradient(top center, #484545, #2c2c2b);background-image: -moz-linear-gradient(top center, #484545, #2c2c2b);background-image: -o-linear-gradient(top center, #484545, #2c2c2b);background-image: -ms-linear-gradient(top center, #484545, #2c2c2b);background-image: linear-gradient(top center, #484545, #2c2c2b);-moz-border-radius: 4px 4px 6px 6px;-webkit-border-radius: 4px 4px 6px 6px;-o-border-radius: 4px 4px 6px 6px;-ms-border-radius: 4px 4px 6px 6px;-khtml-border-radius: 4px 4px 6px 6px;

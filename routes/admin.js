@@ -72,23 +72,18 @@ exports.productCreateSend = function(req, res){
 						        if (err) res.send('1');      
 					          else {
 					          	imageMagick(target_path+".jpg")
-									  	.resize(500,500)
+									  	.resize(300,300)
 									  	.write(target_path+".big.jpg", function (err) {
 											  if (err) res.send('1'); 
 											  else {
 											  	imageMagick(target_path+".big.jpg")
-											  	.resize(100,100)
+											  	.resize(90,90)
 											  	.write(target_path+".min.jpg", function (err) {
 													  if (err) res.send('1'); 
-													  else {
-													  	fs.unlink(target_path+".jpg", function() {
-												        if (err) res.send('1');      
-											          else {
-											          	fs.chmodSync(target_path+".big.jpg", 0777);
-											          	fs.chmodSync(target_path+".min.jpg", 0777);
-											          	res.send('/#product/view/'+room.id+'');
-											          }
-											        });
+													  else {	
+									          	fs.chmodSync(target_path+".big.jpg", 0777);
+									          	fs.chmodSync(target_path+".min.jpg", 0777);
+									          	res.send('/#product/view/'+room.id+'');
 													  }
 													});
 											  }

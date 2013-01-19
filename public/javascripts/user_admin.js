@@ -1,14 +1,19 @@
 $(document).ready(function(){
 	routie({
+		'product/create': function(){
+			picIzq();
+			hideUserPanel();
+			ajaxNormal("/admin/product/create");
+		},
 		'product': function(){
 			picIzq();
 			hideUserPanel();
 			ajaxNormal("/productos");
 		},
-		'product/create': function(){
-			picIzq();
+		'product/view/:id': function(id){
 			hideUserPanel();
-			ajaxNormal("/admin/product/create");
+			$("#user_picture_img").hide();
+			ajaxNormal("/product/view","id="+id);
 		},	
 	});
 	$(document).on("blur","#create_product_nombre",function(){validator("empty",$(this).attr('id'))});

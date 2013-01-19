@@ -24,8 +24,6 @@
 	right:0px;
 	top:300px;
 	display:none;}
-.botonera{position: absolute;left:35px;top:270px;}
-.big_contenido{top:20px;left:0px;right:0px; margin:auto;position:absolute;padding-left:240px}
 .border_corner_input_top{-webkit-border-top-left-radius: 5px;-webkit-border-top-right-radius: 5px;-moz-border-radius-topleft: 5px;-moz-border-radius-topright: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;}
 .border_corner_input_bottom{-webkit-border-bottom-right-radius: 5px;-webkit-border-bottom-left-radius: 5px;-moz-border-radius-bottomright: 5px;-moz-border-radius-bottomleft: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;}
 .border_corner_text{-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}

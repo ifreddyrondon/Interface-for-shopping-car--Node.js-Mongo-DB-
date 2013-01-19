@@ -107,6 +107,6 @@ $(document).ready(function() {
 		$("#user_picture_img").css("left","18px");
 		$("#user_picture_img").css("top","20px");
 	}
-	window.hideUserPanel=hideUserPanel;
 	window.picIzq=picIzq;
+	window.hideUserPanel=hideUserPanel;
 });

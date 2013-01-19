@@ -9,14 +9,14 @@
 		input(name="busqueda", type="text", value="Que deseas buscar", class="campos2 busqueda")
 	br
 	-for (var i=0; i<hola.length; i++)
-		.productos_individual(onclick="location.href='#product/view/#{hola[i]['ID_Producto']}'")	
-			table(cellpadding="3")
+		.productos_individual(onclick="location.href='#product/view/#{hola[i].id}'")	
+			table(cellspacing="0")
 				tr
-					td(rowspan="3")
+					td(rowspan="3", valign="middle")
 						img(src="images/products/#{hola[i].id}.min.jpg")
 				tr
-					td
+					td(style="padding-left:10px")
 						h3	#{hola[i].titulo} 
 				tr(class="font")
-					td	#{hola[i].precio} 
+					td(style="padding-left:10px")	#{hola[i].precio} 
 					td(align="right")	[#{hola[i].cantidad_inicial},#{hola[i].cantidad_restante}]
