@@ -1,12 +1,13 @@
 .botonera_product
-	if sesion.tipo == 'a'
-		.button_wrapper
-			.button_underneath.button_underneath_2
-				a(href="#product/create", class="button", style="width: 117px") Editar Producto	
-	if sesion.tipo == 'u'
-		.button_wrapper
-			.button_underneath.button_underneath_2
-				a(href="#product/create", class="button", style="width: 117px") Añadir Carrito
+	if (typeof(sesion) !== 'undefined')
+		if sesion.tipo == 'a'
+			.button_wrapper
+				.button_underneath.button_underneath_2
+					a(href="#product/create", class="button", style="width: 117px") Editar Producto	
+		if sesion.tipo == 'u'
+			.button_wrapper
+				.button_underneath.button_underneath_2
+					a(href="#product/create", class="button", style="width: 117px") Añadir Carrito
 .big_contenido
 	#product(align="center", class="font")
 		br

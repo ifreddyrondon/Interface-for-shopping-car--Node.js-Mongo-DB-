@@ -45,24 +45,43 @@ exports.registrar = function(req, res){
 		if(registrar_documento == 'RIF'){
 			objBD.query("INSERT INTO persona(User,Clave,Correo,Nombre,Telefono,tipo) VALUES ("+objBD.escape(registrar_user)+","+objBD.escape(pass)+","+objBD.escape(registrar_correo)+","+objBD.escape(registrar_nombre)+","+objBD.escape(registrar_phone)+",'u')", 
 				function(err, result){
-					if (err)	res.send('1'); 
+					if (err){
+						objBD.end();
+						res.send('1'); 
+					}
 				  else {
 					  objBD.query("INSERT INTO usuario(ID_Persona) VALUES ("+result.insertId+")", 
 					  	function(err2, result2){
-								if (err2)	res.send('1'); 
+								if (err2){
+									objBD.end();
+									res.send('1'); 
+								}
 							  else {
 								  objBD.query("INSERT INTO carrito(ID_Usuario) VALUES ("+result2.insertId+")", 
 								  	function(err3, result3){
-											if (err3)	res.send('1'); 
+											if (err3){
+												objBD.end();
+												res.send('1'); 
+											}
 										  else {
 											  objBD.query("INSERT INTO direccion(ID_Persona) VALUES ("+result.insertId+")", 
 											  	function(err4, result4){
-														if (err4)	res.send('1'); 
+														if (err4){
+															objBD.end();
+															res.send('1'); 
+														}
 													  else {
 														  objBD.query("INSERT INTO AuthAssignment(itemname,ID_Persona) VALUES ('usuario',"+result.insertId+")", 
 														  	function(err5, result5){
-																	if (err5)	res.send('1'); 
-																  else res.send('0'); 
+																	if (err5){
+																		objBD.end();
+																		res.send('1'); 
+																	}
+																  else {
+																	  objBD.end();
+																	  res.send('0'); 
+																  }
+
 																});
 													  }
 													});
@@ -71,26 +90,40 @@ exports.registrar = function(req, res){
 							  }
 							});
 				  }
-				  objBD.end();
 				});	
 		}
 		else if(registrar_documento != 'RIF'){
 			objBD.query("INSERT INTO persona(User,Clave,Correo,Nombre,Telefono,tipo) VALUES ("+objBD.escape(registrar_user)+","+objBD.escape(pass)+","+objBD.escape(registrar_correo)+","+objBD.escape(registrar_nombre)+","+objBD.escape(registrar_phone)+",'p')", 
 				function(err, result){
-					if (err)	res.send('1'); 
+					if (err){
+						objBD.end();
+						res.send('1'); 
+					}
 				  else {
 					  objBD.query("INSERT INTO proveedor(ID_Persona,RIF) VALUES ("+result.insertId+","+objBD.escape(registrar_documento)+")", 
 					  	function(err2, result2){
-								if (err2)	res.send('1'); 
+								if (err2){
+									objBD.end();
+									res.send('1'); 
+								}
 							  else {
 								  objBD.query("INSERT INTO direccion(ID_Persona) VALUES ("+result.insertId+")", 
 								  	function(err3, result3){
-											if (err3)	res.send('1'); 
+											if (err3){
+												objBD.end();
+												res.send('1'); 
+											}
 										  else {
 											  objBD.query("INSERT INTO AuthAssignment(itemname,ID_Persona) VALUES ('proveedor',"+result.insertId+")", 
 											  	function(err4, result4){
-														if (err4)	res.send('1'); 
-													  else res.send('0'); 
+														if (err4){
+															objBD.end();
+															res.send('1'); 
+														}
+													  else {
+													  	objBD.end();
+															res.send('0');  
+													  }
 													});
 										  }
 										});
@@ -117,17 +150,26 @@ exports.login = function(req, res){
 		
 		objBD.query("SELECT ID_Persona, User, tipo FROM persona WHERE User = "+ objBD.escape(login_user) +" AND Clave = "+ objBD.escape(pass) +" OR Correo = "+ objBD.escape(login_user) +" AND Clave = "+ objBD.escape(pass) +"",
 		function(err, rows, fields) {
-	    if (err) {res.send('2'); }
+	    if (err){
+				objBD.end();
+				res.send('2'); 
+			}							
 	    else {
 		    if (rows.length == 1){
 					if (rows[0]['tipo'] == 'u'){
 						objBD.query("SELECT ID_Usuario FROM usuario WHERE ID_Persona = "+ rows[0]['ID_Persona'] +"",
 						function(err2, rows2, fields2) {
-					    if (err2) {res.send('2'); }
+					    if (err2){
+								objBD.end();
+								res.send('2'); 
+							}
 					    else {
 					  		objBD.query("SELECT ID_Carrito FROM carrito WHERE ID_Usuario = "+ rows2[0]['ID_Usuario'] +"",  	
 					  		function(err3, rows3, fields3) {  	
-					    		if (err3) {res.send('2'); }
+					    		if (err3){
+										objBD.end();
+										res.send('2'); 
+									}
 					    		else {
 					    			var user = {
 		        						id: rows[0]['ID_Persona'],
@@ -141,6 +183,7 @@ exports.login = function(req, res){
 			        				console.log(req.session.user);
 			        				res.send('0'); 
 			        			});
+			        			objBD.end();
 					    		}
 					    	});
 						  }  
@@ -148,7 +191,10 @@ exports.login = function(req, res){
 					}	else if (rows[0]['tipo'] == 'p'){
 						objBD.query("SELECT ID_Proveedor FROM proveedor WHERE ID_Persona = "+ rows[0]['ID_Persona'] +"",
 						function(err2, rows2, fields2) {
-					    if (err2) {res.send('2'); }
+					    if (err2){
+								objBD.end();
+								res.send('2'); 
+							}
 					    else {
 						  	var user = {
         						id: rows[0]['ID_Persona'],
@@ -161,12 +207,16 @@ exports.login = function(req, res){
 	        				console.log(req.session.user);
 	        				res.send('0'); 
 	        			});
+	        			objBD.end();
 						  }  
 					  });
 					} else if (rows[0]['tipo'] == 'a'){
 						objBD.query("SELECT ID_Administrador FROM administrador WHERE ID_Persona = "+ rows[0]['ID_Persona'] +"",
 						function(err2, rows2, fields2) {
-					    if (err2) {res.send('2'); }
+					    if (err2){
+								objBD.end();
+								res.send('2'); 
+							}
 					    else {
 						  	var user = {
         						id: rows[0]['ID_Persona'],
@@ -179,13 +229,16 @@ exports.login = function(req, res){
 	        				console.log(req.session.user);
 	        				res.send('0'); 
 	        			});
+	        			objBD.end();
 						  }  
 					  });
 					}
 		    }
-		    else{res.send('1'); }
+		    else{
+					objBD.end();
+					res.send('1'); 
+				}
 	    }
-	    objBD.end();
 	  }); 
 	}
 }
@@ -340,11 +393,17 @@ exports.datos = function(req, res){
 			if(id == req.session.user.id){
 				objBD.query("SELECT Correo, Nombre, Telefono FROM persona WHERE ID_Persona = "+ objBD.escape(id) +"",  	
 				function(err, rows, fields) {  	
-		  		if (err)	res.send('1'); 
+		  		if (err){
+						objBD.end();
+						res.send('1'); 
+					}
 		  		else {
 		  			objBD.query("SELECT Pais, Estado, Ciudad, Direccion, Codigo_Postal FROM direccion WHERE ID_Persona = "+ objBD.escape(id) +"",  	
 						function(err2, rows2, fields2) {  	
-				  		if (err2) throw err2;	
+				  		if (err2){
+								objBD.end();
+								res.send('1'); 
+							}
 				  		else {
 				  			datos = {
 				  					id: req.session.user.id,
@@ -359,10 +418,10 @@ exports.datos = function(req, res){
 		 								codigo_postal: rows2[0]['Codigo_Postal'],
 								};
 								res.render('user/index_comunes/view_datos', { datos: datos, sesion: req.session.user });			
+								objBD.end();
 				  		}
 				  	});
 		  		}
-		  		objBD.end();
 		  	});
 		  }
 		  else
@@ -412,17 +471,23 @@ exports.update = function(req, res){
 		
 			objBD.query("UPDATE persona SET Nombre = "+ objBD.escape(nombre) +", Correo = "+ objBD.escape(correo) +", Telefono = "+ objBD.escape(phone) +" WHERE ID_Persona = "+ objBD.escape(datos.id) +"",  	
 				function(err, rows, fields) {  	
-					if (err)	res.send('1'); 
+					if (err){
+						objBD.end();
+						res.send('1'); 
+					}
 					else{
 						objBD.query("UPDATE direccion SET Estado = "+ objBD.escape(edo) +", Ciudad = "+ objBD.escape(ciudad) +", Codigo_Postal = "+ objBD.escape(postal) +", Direccion = "+ objBD.escape(direccion) +"WHERE ID_Persona = "+ objBD.escape(datos.id) +"", 
 							function(err, rows, fields) {  	
-								if (err)	res.send('1'); 
+								if (err){
+									objBD.end();
+									res.send('1'); 
+								}
 								else{
 									res.send('/#datos/'+datos.id+'');
+									objBD.end();
 								}
 						});
-					}
-					objBD.end();	
+					}	
 			});
 		} catch (e) {
 		  res.send('1'); 
@@ -441,7 +506,10 @@ exports.pass = function(req, res){
 		objBD.connect();
 		objBD.query("SELECT Clave FROM persona WHERE ID_Persona = "+ req.session.user.id +"",
 			function(err, rows, fields) {  	
-				if (err)	res.send('1'); 
+				if (err){
+					objBD.end();
+					res.send('1'); 
+				}
 				else{
 					if(rows[0]['Clave']==pass_old){
 						if(req.body.new_pass_temp == req.body.repeat_new_pass_temp){
@@ -449,15 +517,26 @@ exports.pass = function(req, res){
 							pass_new= pass_new.substr(0,1)+"u"+pass_new.substr(2,pass_new.length/2)+"se"+pass_new.substr(pass_new.length/2)+"r";
 							objBD.query("UPDATE persona SET Clave = "+objBD.escape(pass_new)+" WHERE ID_Persona = "+ req.session.user.id +"", 
 								function(err2, rows2, fields2) {  	
-									if (err2)	res.send('1'); 
-									else	res.send('/#datos/'+datos.id+'');
+									if (err2){
+										objBD.end();
+										res.send('1'); 
+									}
+									else{
+										res.send('/#datos/'+datos.id+'');	
+										objBD.end();
+									}
 							});
 						}
-						else	res.send('3'); 
+						else{
+							res.send('3'); 
+							objBD.end();
+						}
 					}
-					else	res.send('2'); 
+					else{
+						res.send('2'); 	
+						objBD.end();
+					}	
 				}
-			objBD.end();
 		});
 	}
 };

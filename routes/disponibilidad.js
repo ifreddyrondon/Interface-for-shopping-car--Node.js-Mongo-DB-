@@ -12,10 +12,19 @@ exports.disponibilidad = function(req, res){
 		user = sanitize(user).entityDecode();
 		objBD.query("SELECT User FROM persona WHERE User = "+ objBD.escape(user) +"", 
 		function(err, rows, fields) {
-	    if (err) throw err;
+	    if (err){
+				objBD.end();
+				res.send('1'); 
+			}
 	    else {
-		    if (rows.length > 0)	res.send('1');
-		    else	res.send('0');
+		    if (rows.length > 0){
+					objBD.end();
+					res.send('1'); 
+				}
+		    else{
+			  	res.send('0'); 
+			  	objBD.end();
+		    }	
 	    }
 	  });
 	}
@@ -25,10 +34,19 @@ exports.disponibilidad = function(req, res){
 		correo = sanitize(correo).entityDecode();
 		objBD.query("SELECT Correo FROM persona WHERE Correo = "+ objBD.escape(correo) +"", 
 		function(err, rows, fields) {
-	    if (err) throw err;
+	    if (err){
+				objBD.end();
+				res.send('1'); 
+			}
 	    else {
-		    if (rows.length > 0)	res.send('1');
-		    else	res.send('0');
+		    if (rows.length > 0){
+					objBD.end();
+					res.send('1'); 
+				}
+		    else{
+			  	res.send('0'); 
+			  	objBD.end();
+		    }
 	    }
 	  });
 	}
@@ -38,10 +56,19 @@ exports.disponibilidad = function(req, res){
 		doc = sanitize(doc).entityDecode();
 		objBD.query("SELECT RIF FROM proveedor WHERE RIF = "+ objBD.escape(doc) +"", 
 		function(err, rows, fields) {
-	    if (err) throw err;
+	    if (err){
+				objBD.end();
+				res.send('1'); 
+			}
 	    else {
-		    if (rows.length > 0)	res.send('1');
-		    else	res.send('0');
+		    if (rows.length > 0){
+					objBD.end();
+					res.send('1'); 
+				}
+		    else{
+			  	res.send('0'); 
+			  	objBD.end();
+		    }
 	    }
 	  });
 	}

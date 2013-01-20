@@ -33,6 +33,7 @@ $(document).ready(function() {
 			$("#user_panel_contenido").hide();
 			$("#user_picture_img").hide();
 			ajaxNormal("/product/view","id="+id);
+			//alert(#{producto.titulo});
 		},
 	});
 	$("#start").click(function(){destacadoClick($(this).attr('id'),"women,men,children")});
