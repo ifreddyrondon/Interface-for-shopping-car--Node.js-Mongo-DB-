@@ -1,16 +1,16 @@
 //----RESIZE----------------------//
 $(window).load(function(){    
-	var pageWindow = $(window);var windowDiv = $("#windowDiv");var contenido = $(".contenido");
-	var user_container = $(".user_container");
-	var registrar = $("#registrar");
+	var pageWindow = $(window);var contenido = $(".contenido");
 	
   	pageWindow.resize(function adjustWindowDivDimensions() {
-		windowDiv.css("width",pageWindow.width()-60);
+		$("#windowDiv").css("width",pageWindow.width()-60);
 		contenido.css("height",pageWindow.height()-40);
-		user_container.css("height",pageWindow.height()-50);
+		$(".user_container").css("height",pageWindow.height()-50);
+		$(".product_unlogin").css("height",pageWindow.height()-50);
 		//Registrar y login
 		if ($("#login").css("display") == "none" && $("#registrar").css("display") == "none"){
 			contenido.css("width",pageWindow.width()-264);
+			$(".product_unlogin").css("width",pageWindow.width()-100);
 			contenido.css("left","100px");
 		}
 		else if($("#login").css("display") == "block" || $("#registrar").css("display") == "block"){
@@ -27,15 +27,6 @@ $(window).load(function(){
 });
 //----DESTACADO-------------//
 $(document).ready(function() {
-	routie({
-		'product/view/:id': function(id){
-			$(".user_container").css("width",$(window).width()-90);
-			$("#user_panel_contenido").hide();
-			$("#user_picture_img").hide();
-			ajaxNormal("/product/view","id="+id);
-			//alert(#{producto.titulo});
-		},
-	});
 	$("#start").click(function(){destacadoClick($(this).attr('id'),"women,men,children")});
 	$("#women").click(function(){destacadoClick($(this).attr('id'),"start,men,children")});
 	$("#men").click(function(){destacadoClick($(this).attr('id'),"start,women,children")});

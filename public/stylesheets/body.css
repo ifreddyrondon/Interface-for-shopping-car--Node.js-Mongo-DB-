@@ -23,6 +23,8 @@ li { list-style: none }
 	overflow:hidden;
 	float:left;	}
 /*------PRODUCTO INDIVIDUAL---------------*/
+.corner_left_top{-webkit-border-top-left-radius:15px;-moz-border-radius-topleft:15px;border-top-left-radius:15px}
+.product_unlogin{position:absolute;top:50px;right:0px;background-image:url(../images/bg_texture_login.jpg);box-shadow: inset 0 0 490px black;z-index:100;display:none}
 #producto_img{position:absolute;left:18px;top:0px;}
 .border_corner_img{-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;}
 .productos_individual h3{font: Arial,Helvetica,Sans-serif;color: #d7d7d7;text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);}
@@ -45,7 +47,7 @@ li { list-style: none }
 #login_tap{ right:140px }
 #registrar_tap{ right:40px }
 /*--Container REG & LOGIN & USER ACTIONS---------------------*/
-.user_container {position:absolute;top:50px;right:0px;background-image:url(../images/bg_texture_login.jpg);box-shadow: inset 0 0 490px black;display:none;	z-index: 100	}
+.user_container {position:absolute;top:50px;right:0px;background-image:url(../images/bg_texture_login.jpg);box-shadow: inset 0 0 490px black;z-index:100}
 .big_contenido{top:20px;left:0px;right:0px; margin:auto;position:absolute;padding-left:240px}
 /*---BOTON---------------------------*/
 .botonera_product{position:absolute;top:340px;left:50px;}

@@ -39,6 +39,12 @@ $(document).ready(function() {
 			hideUserPanel();
 			ajaxNormal("/user/datos/formpass");
 		},
+		'product/view/:id': function(id){
+			$(".user_container").css("width",$(window).width()-90);
+			$("#user_panel_contenido").hide();
+			$("#user_picture_img").hide();
+			ajaxNormal("/product/view","id="+id);
+		},
 	});
 	$("#user_panel_tap_mini").click(function(){
 		$(".user_container").show();
@@ -86,6 +92,7 @@ $(document).ready(function() {
 	function showMenuPpal(){
 		$(".big_container").hide();
 		$(".user_container").css("width","235px");
+		$(".user_container").removeClass("corner_left_top");
 		$("#user_panel_contenido").show();
 		$("#user_panel_picture_atras").hide();
 		$("#logout").show();
@@ -94,6 +101,7 @@ $(document).ready(function() {
 	}
 	function hideUserPanel(){
 		$(".user_container").css("width",pageWindow.width()-90);
+		$(".user_container").addClass("corner_left_top");
 		$("#user_panel_foto_contenido").hide();
 		$("#user_panel_foto_alt").hide();
 		$("#user_panel_foto_subir").hide();
