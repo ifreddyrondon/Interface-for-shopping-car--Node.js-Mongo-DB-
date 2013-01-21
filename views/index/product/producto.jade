@@ -1,18 +1,46 @@
-.botonera_product
-	if (typeof(sesion) !== 'undefined')
-		if sesion.tipo == 'a'
-			.button_wrapper
-				.button_underneath.button_underneath_2
-					a(href="#product/create", class="button", style="width: 117px") Editar Producto	
-		if sesion.tipo == 'u'
-			.button_wrapper
-				.button_underneath.button_underneath_2
-					a(href="#product/create", class="button", style="width: 117px") Añadir Carrito
-.big_contenido
-	#product(align="center", class="font")
+if (typeof(producto) == 'undefined')
+	.botonera_product
+		.button_wrapper
+			.button_underneath.button_underneath_2
+				a(href="#product/create", class="button", style="width: 117px") Regresar
+	img(id="producto_img", src="images/products/no-product.png", class="border_corner_img")	
+	.big_contenido_product(align="center")
 		br
-		font(size="6", class="titulo")	#{producto.titulo} &nbsp;
+		br
+		br
+		br
+		.font_w(style="font-size:50px") Producto <br />	no encontrado
+if (typeof(producto) !== 'undefined')
+	.left_panel(align="center")
+		br
+		br
+		.mini_img_product
+			img(id="producto_img_micro", src="images/products/#{producto.id}.micro.jpg", class="border_corner_img_min")
+			br
+			img(class="producto_img_micro", src="images/products/#{producto.id}.micro.jpg", class="border_corner_img_min")
+		img(id="producto_img", src="images/products/#{producto.id}.big.jpg", class="border_corner_img")
+		br
+		br
+		br
+		if (typeof(sesion) !== 'undefined')
+			if sesion.tipo == 'a'
+				.button_wrapper
+					.button_underneath.button_underneath_2
+						a(href="#product/create", class="button", style="width: 117px") Editar Producto	
+				.button_wrapper
+					.button_underneath.button_underneath_2
+						a(href="#product", class="button", style="width: 117px") Regresar
+			if sesion.tipo == 'u'
+				.button_wrapper
+					.button_underneath.button_underneath_2
+						a(href="#product", class="button", style="width: 117px") Regresar
+	.big_contenido_product(align="center")
 		input(name="busqueda", type="text", value="Que deseas buscar", class="campos2 busqueda")
-	br  
-	img(id="producto_img", src="images/products/#{producto.id}.big.jpg", class="border_corner_img")
-	
+		#product(align="center", class="font")
+			br
+			font(size="6", class="titulo")	#{producto.titulo}
+		br  
+		.font_w(style="font-size:15px")	#{producto.precio} Bs.F
+			<br />	Vendidos: #{producto.cantidad_inicial - producto.cantidad_restante}
+			br
+			<br />	#{producto.descripcion}

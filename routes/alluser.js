@@ -22,8 +22,13 @@ exports.product = function(req, res){
  	  Producto.findById(id, function(err, producto) {
  	  	if(err) res.send('1');
  	  	else{
-	 	  	console.log(producto.titulo);	
-	 	  	res.render('index/product/producto', { producto: producto, sesion:req.session.user });
+ 	  		if(producto==null){
+	 	  		res.render('index/product/producto');	
+ 	  		}
+ 	  		else{
+	 	  		console.log(producto.titulo);	
+	 	  		res.render('index/product/producto', { producto: producto, sesion:req.session.user });	
+ 	  		}
  	  	}
     });
 	}
