@@ -41,6 +41,7 @@ $(document).ready(function() {
 		},
 		'product/view/:id': function(id){
 			$(".user_container").css("width",$(window).width()-90);
+			$(".user_container").addClass("corner_left_top");
 			$("#user_panel_contenido").hide();
 			$("#user_picture_img").hide();
 			ajaxNormal("/product/view","id="+id);

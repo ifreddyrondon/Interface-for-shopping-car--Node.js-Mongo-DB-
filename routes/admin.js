@@ -82,7 +82,7 @@ exports.productCreateSend = function(req, res){
 													  if (err) res.send('1'); 
 													  else {	
 									          	imageMagick(target_path+".big.jpg")
-													  	.resize(50,50)
+													  	.resize(40,40)
 													  	.write(target_path+".micro.jpg", function (err) {
 															  if (err) res.send('1'); 
 															  else {	

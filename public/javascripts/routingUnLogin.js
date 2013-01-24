@@ -16,6 +16,7 @@ $(document).ready(function(){
 		},
 		'product/view/:id': function(id){
 			$(".user_container").hide();
+			$(".user_container").addClass("corner_left_top");
 			$("#impress").hide();
 			$(".product_unlogin").show();
 			ajaxNormal("/product/view","id="+id);

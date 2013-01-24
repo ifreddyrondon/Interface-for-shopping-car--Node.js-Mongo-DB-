@@ -11,36 +11,45 @@ if (typeof(producto) == 'undefined')
 		br
 		.font_w(style="font-size:50px") Producto <br />	no encontrado
 if (typeof(producto) !== 'undefined')
-	.left_panel(align="center")
-		br
-		br
-		.mini_img_product
-			img(id="producto_img_micro", src="images/products/#{producto.id}.micro.jpg", class="border_corner_img_min")
-			br
-			img(class="producto_img_micro", src="images/products/#{producto.id}.micro.jpg", class="border_corner_img_min")
-		img(id="producto_img", src="images/products/#{producto.id}.big.jpg", class="border_corner_img")
-		br
-		br
-		br
-		if (typeof(sesion) !== 'undefined')
-			if sesion.tipo == 'a'
-				.button_wrapper
-					.button_underneath.button_underneath_2
-						a(href="#product/create", class="button", style="width: 117px") Editar Producto	
-				.button_wrapper
-					.button_underneath.button_underneath_2
-						a(href="#product", class="button", style="width: 117px") Regresar
-			if sesion.tipo == 'u'
-				.button_wrapper
-					.button_underneath.button_underneath_2
-						a(href="#product", class="button", style="width: 117px") Regresar
-	.big_contenido_product(align="center")
-		input(name="busqueda", type="text", value="Que deseas buscar", class="campos2 busqueda")
-		#product(align="center", class="font")
-			br
-			font(size="6", class="titulo")	#{producto.titulo}
-		br  
-		.font_w(style="font-size:15px")	#{producto.precio} Bs.F
-			<br />	Vendidos: #{producto.cantidad_inicial - producto.cantidad_restante}
-			br
-			<br />	#{producto.descripcion}
+	table
+		tr
+			td
+				.left_panel(align="center")
+					br
+					br
+					.mini_img_product
+						a(href="#product/create")	
+							img(class="producto_img_micro", src="images/products/#{producto.id}.micro.jpg", class="border_corner_img_min")
+					img(id="producto_img", src="images/products/#{producto.id}.big.jpg", class="border_corner_img", data-zoom-image="images/products/50ff5b4a2fe44bca03000001.jpg")
+					br
+					br
+					br
+					if (typeof(sesion.tipo) != 'undefined')
+						if sesion.tipo == 'a'
+							.button_wrapper
+								.button_underneath.button_underneath_2
+									a(href="#product/create", class="button", style="width: 117px") Editar Producto	
+							.button_wrapper
+								.button_underneath.button_underneath_2
+									a(href="#product", class="button", style="width: 117px") Regresar
+						if sesion.tipo == 'u'
+							.button_wrapper
+								.button_underneath.button_underneath_2
+									a(href="#product", class="button", style="width: 117px") Regresar
+			td					
+				.big_contenido_product(align="center")
+					input(name="busqueda", type="text", value="Que deseas buscar", class="campos2 busqueda")
+					#product(align="center", class="font")
+						br
+						font(size="6", class="titulo")	#{producto.titulo}
+					br  
+					table
+						tr
+							td
+								.font(style="font-size:24px")	#{producto.precio}	Bs.F	
+							td(style="padding-left:20px")
+								.font(style="font-size:24px")	Vendidos: #{producto.cantidad_inicial - producto.cantidad_restante}
+					.font_w(align="left",style="font-size:16px") Descripcion:
+					br
+					.font(style="font-size:15px;text-align:justify;text-justify:newspaper;padding-right:50px") #{producto.descripcion}			
+						

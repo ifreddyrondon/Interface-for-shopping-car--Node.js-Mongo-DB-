@@ -26,7 +26,7 @@ $(window).load(function(){
     }).trigger("resize");
 });
 //----DESTACADO-------------//
-$(document).ready(function() {
+$(document).ready(function(){
 	$("#start").click(function(){destacadoClick($(this).attr('id'),"women,men,children")});
 	$("#women").click(function(){destacadoClick($(this).attr('id'),"start,men,children")});
 	$("#men").click(function(){destacadoClick($(this).attr('id'),"start,women,children")});
@@ -89,4 +89,11 @@ $(document).ready(function() {
 			$(this).closest("li").remove();
 		});
 	});
+	//----Product zoom inner--------//
+	$(document).on("hover","#producto_img",function(){
+	  $("#producto_img").elevateZoom({
+		  zoomType	: "inner",
+		  cursor		: "crosshair",
+		});
+  });
 });

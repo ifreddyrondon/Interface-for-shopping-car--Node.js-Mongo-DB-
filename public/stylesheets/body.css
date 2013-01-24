@@ -15,7 +15,7 @@ input[type="text"], input[type="submit"]{	pointer-events: auto	}
 img{ border-style: none }
 li { list-style: none }
 #windowDiv{	margin:0 auto 0 auto	}
-#workspace{	position:relative;	top:11px	}
+#workspace{	position:relative;top:11px}
 .contenido{
 	top:30px;
 	position:relative;
@@ -23,11 +23,10 @@ li { list-style: none }
 	overflow:hidden;
 	float:left;	}
 /*------PRODUCTO INDIVIDUAL---------------*/
-.left_panel{width:400px;padding-top:10px}
+.left_panel{width:385px;padding-top:10px}
 .corner_left_top{-webkit-border-top-left-radius:15px;-moz-border-radius-topleft:15px;border-top-left-radius:15px}
 .product_unlogin{position:absolute;top:50px;right:0px;background-image:url(../images/bg_texture_login.jpg);box-shadow: inset 0 0 490px black;z-index:100;display:none}
 .mini_img_product{width:30px;float:left;padding-left:7px;padding-top:20px}
-.big_contenido_product{top:20px;left:0px;right:0px; margin:auto;position:absolute;padding-left:390px}
 .border_corner_img{-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;}
 .border_corner_img_min{-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 .productos_individual h3{font: Arial,Helvetica,Sans-serif;color: #d7d7d7;text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);}
