@@ -5,6 +5,11 @@ var	BD = require('../BD')
 	, sanitize = require('validator').sanitize
 	, check = require('validator').check;
 	
+var db = BD.mongodb();
+var producto_schema = require('../models/producto');
+var Producto = db.model('Producto', producto_schema);
+
+	
 exports.productCreate = function(req, res){
 	if(req.session.user.tipo == 'a'){
 		res.render('user/admin/create_product');
@@ -14,10 +19,6 @@ exports.productCreate = function(req, res){
 }
 exports.productCreateSend = function(req, res){
 	if(req.session.user.tipo == 'a'){
-		db = BD.mongodb();
-		var producto_schema = require('../models/producto')
-  		, Producto = db.model('Producto', producto_schema);
-	  
 		try {
 	    check(req.body.create_product_nombre).notNull();
 		  check(req.body.create_product_cantidad_inicial).notNull().isInt();
@@ -65,30 +66,32 @@ exports.productCreateSend = function(req, res){
 			  	if (req.files.photoimg_product.size > 2097152)	res.send('1');
 					else{		
 				    target_path = "public/images/products/"+room.id;
-				    fs.rename(tmp_path, target_path+".jpg", function(err) {
+				    fs.rename(tmp_path, target_path+".1.jpg", function(err) {
 				        if (err)	res.send('1');
 				        else {
 					        fs.unlink(tmp_path, function() {
 						        if (err) res.send('1');      
 					          else {
-					          	imageMagick(target_path+".jpg")
+					          	imageMagick(target_path+".1.jpg")
 									  	.resize(300,300)
-									  	.write(target_path+".big.jpg", function (err) {
+									  	.write(target_path+".1.big.jpg", function (err) {
 											  if (err) res.send('1'); 
 											  else {
-											  	imageMagick(target_path+".big.jpg")
+											  	imageMagick(target_path+".1.big.jpg")
 											  	.resize(90,90)
-											  	.write(target_path+".min.jpg", function (err) {
+											  	.write(target_path+".1.min.jpg", function (err) {
 													  if (err) res.send('1'); 
 													  else {	
-									          	imageMagick(target_path+".big.jpg")
-													  	.resize(40,40)
-													  	.write(target_path+".micro.jpg", function (err) {
+									          	imageMagick(target_path+".1.big.jpg")
+													  	.resize(50,50)
+													  	.write(target_path+".1.micro.jpg", function (err) {
 															  if (err) res.send('1'); 
-															  else {	
-											          	fs.chmodSync(target_path+".big.jpg", 0777);
-											          	fs.chmodSync(target_path+".min.jpg", 0777);
-											          	fs.chmodSync(target_path+".micro.jpg", 0777);
+															  else {
+															  	producto.images = room.id+".1";
+															  	producto.save();	
+											          	fs.chmodSync(target_path+".1.big.jpg", 0777);
+											          	fs.chmodSync(target_path+".1.min.jpg", 0777);
+											          	fs.chmodSync(target_path+".1.micro.jpg", 0777);
 											          	res.send('/#product/view/'+room.id+'');
 															  }
 															});
@@ -110,4 +113,29 @@ exports.productCreateSend = function(req, res){
 	}
 	else
 		console.log("No tienes los permisos suficientes");	
+}
+exports.productEditar = function(req, res){
+	if(req.session.user.tipo == 'a'){
+		if(req.body.id){
+			id = sanitize(req.body.id).trim();
+			id = sanitize(id).xss();
+			id = sanitize(id).entityDecode();
+			
+			Producto.findById(id, function(err, producto) {
+	 	  	if(err) res.send('1');
+	 	  	else{
+	 	  		if(producto==null)
+		 	  		res.render('user/admin/editar_product');
+	 	  		else
+		 	  		res.render('user/admin/editar_product', { producto: producto });	
+	 	  	}
+	    });
+		}
+		else
+		 res.send('1');		
+	}
+	else
+		res.send('1');
+}
+exports.productEditarSend = function(req, res){
 }

@@ -1,8 +1,8 @@
 //----RESIZE----------------------//
 $(window).load(function(){    
-	var pageWindow = $(window);var contenido = $(".contenido");
-	
-  	pageWindow.resize(function adjustWindowDivDimensions() {
+	pageWindow = $(window);
+	contenido = $(".contenido");
+	pageWindow.resize(function adjustWindowDivDimensions() {
 		$("#windowDiv").css("width",pageWindow.width()-60);
 		contenido.css("height",pageWindow.height()-40);
 		$(".user_container").css("height",pageWindow.height()-50);
@@ -23,7 +23,7 @@ $(window).load(function(){
 			$("#user_panel_foto_contenido").css("width",pageWindow.width()-400);
 		}
 		sizePicture();	
-    }).trigger("resize");
+	}).trigger("resize");
 });
 //----DESTACADO-------------//
 $(document).ready(function(){

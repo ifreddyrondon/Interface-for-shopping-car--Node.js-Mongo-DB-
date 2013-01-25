@@ -54,6 +54,8 @@ app.post('/user/datos/pass', user.pass);
 //ADMIN
 app.post('/admin/product/create', admin.productCreate);
 app.post('/admin/product/createSend', admin.productCreateSend);
+app.post('/admin/product/editar', admin.productEditar);
+app.post('/admin/product/editarSend', admin.productEditarSend);
 //PRODUCT
 app.post('/productos', alluser.productos);
 app.post('/product/view', alluser.product);

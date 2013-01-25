@@ -1,0 +1,59 @@
+.botonera
+	.button_wrapper
+		.button_underneath.button_underneath_2
+			a(href="#product", class="button", style="width: 117px") Regresar
+.big_contenido(align="center")
+	#product(align="center", class="font")
+		br
+		font(size="6", class="titulo")	Editar #{producto.titulo}
+	form(id="form-editar_product", enctype="multipart/form-data")
+		br
+		div
+			table
+				tr
+					td
+						font(size="5", class="font")	Nombre:
+					td
+						input(id="editar_product_nombre", name="editar_product_nombre", type="text", value="#{producto.titulo}", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Cantidad Inicial:
+					td
+						input(id="editar_product_cantidad_inicial", name="editar_product_cantidad_inicial", type="text", value="#{producto.cantidad_inicial}", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Cantidad Restante:
+					td
+						input(id="editar_product_cantidad_restante", name="editar_product_cantidad_restante", type="text", value="#{producto.cantidad_restante}", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Peso:
+					td
+						input(id="editar_product_peso", name="editar_product_peso", type="text", value="#{producto.peso}", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Tamaño:
+					td
+						input(id="editar_product_tamano", name="editar_product_tamano", type="text", value="#{producto.tamano}", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Precio:
+					td
+						input(id="editar_product_precio", name="editar_product_precio", type="text", value="#{producto.precio}", class="campos2")
+				tr
+					td
+						font(size="5", class="font")	Descripcion:
+					td
+						textarea(id="editar_product_descripcion", name="editar_product_descripcion", rows="4", cols="28", class="campos2")	#{producto.descripcion}
+				tr
+					td(colspan="2")
+						input(type="file", name="photoimg_product_edit", id="photoimg_product_edit", style="pointer-events: auto;")
+		br
+		.button_wrapper(align="center")
+			.button_underneath
+				input(id="btn_editar_producto_enviar", type="submit", value="Editar", class="button")
+	br
+	br
+	br
+	br
+	.error_datos_create_product.font_error	Debe completar los datos requerios
