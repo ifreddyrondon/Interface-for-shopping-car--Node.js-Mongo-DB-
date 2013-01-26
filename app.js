@@ -56,6 +56,7 @@ app.post('/admin/product/create', admin.productCreate);
 app.post('/admin/product/createSend', admin.productCreateSend);
 app.post('/admin/product/editar', admin.productEditar);
 app.post('/admin/product/editarSend', admin.productEditarSend);
+app.post('/admin/product/delete_img', admin.productEditarDeleteImg);
 //PRODUCT
 app.post('/productos', alluser.productos);
 app.post('/product/view', alluser.product);

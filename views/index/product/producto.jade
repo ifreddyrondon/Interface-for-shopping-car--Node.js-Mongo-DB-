@@ -21,10 +21,10 @@ if (typeof(producto) !== 'undefined')
 	.left_panel(align="center")
 		br
 		br
-		.mini_img_product
+		.mini_img_product(align="center")
 			-for (var i=0; i<producto.images.length; i++)
 				a(href="#product/create")	
-					img(class="producto_img_micro", src="images/products/#{producto.images[i]}.micro.jpg", class="border_corner_img_min")
+					img(class="producto_img_micro border_corner_img_min", src="images/products/#{producto.images[i]}.micro.jpg", style="padding-bottom:5px")
 		img(id="producto_img", src="images/products/#{producto.images[0]}.big.jpg", class="border_corner_img", data-zoom-image="images/products/#{producto.images[0]}.jpg")
 		br
 		br

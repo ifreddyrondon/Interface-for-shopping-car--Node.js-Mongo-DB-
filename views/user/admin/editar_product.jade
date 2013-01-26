@@ -7,6 +7,7 @@
 		br
 		font(size="6", class="titulo")	Editar #{producto.titulo}
 	form(id="form-editar_product", enctype="multipart/form-data")
+		input(id="editar_id_producto", name="editar_id_producto", type="hidden", value="#{producto.id}")
 		br
 		div
 			table
@@ -48,6 +49,12 @@
 				tr
 					td(colspan="2")
 						input(type="file", name="photoimg_product_edit", id="photoimg_product_edit", style="pointer-events: auto;")
+		-for (var i=0; i<producto.images.length; i++)
+			.delete_img_edit
+				img(src="images/products/#{producto.images[i]}.min.jpg", class="border_corner_img", style="padding:7px")
+				a(class="xmark", href="#product/delete_img/#{producto.images[i]}")
+					img(src="images/delete.png")	
+		br
 		br
 		.button_wrapper(align="center")
 			.button_underneath
