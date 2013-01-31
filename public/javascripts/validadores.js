@@ -92,7 +92,7 @@ $(document).ready(function(){
 			return false;	
 	}
 //----AJAX----------------------------------------------------------------------------------
-	function ajaxNormal(url,datos){
+	function ajaxNormal(url,datos,reload){
 		$.ajax({
 	  	type: 'POST',
 			url: url,
@@ -104,8 +104,10 @@ $(document).ready(function(){
 	    	$("#bowlG").hide();
 	    	if (res == '1')
 	      	alert("error");
-	    	else 
-	        $(".big_container").html(res);
+	    	else {
+		    	if(reload)	window.location = res;
+		    	else	$(".big_container").html(res);
+	    	}
 			}
 		});
 	}

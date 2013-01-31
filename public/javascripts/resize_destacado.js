@@ -89,11 +89,19 @@ $(document).ready(function(){
 			$(this).closest("li").remove();
 		});
 	});
-	//----Product zoom inner--------//
+	//----Product individual funciones--------//
 	$(document).on("hover","#producto_img",function(){
 	  $("#producto_img").elevateZoom({
 		  zoomType	: "inner",
 		  cursor		: "crosshair",
 		});
+  });
+  $(document).on("click",".producto_img_micro",function(){
+  	numberid = $(this).attr('src').split('.');
+	  document.getElementById("producto_img").src = numberid[0]+"."+numberid[1]+".big.jpg";
+	  $(document.getElementById("producto_img")).attr('data-zoom-image', numberid[0]+'.'+numberid[1]+'.jpg');
+	  
+	  //$(document.getElementById("producto_img")).attr('data-zoom-image') = "asd";
+	  alert($(document.getElementById("producto_img")).attr('data-zoom-image'));
   });
 });

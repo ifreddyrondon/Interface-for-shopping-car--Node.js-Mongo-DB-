@@ -8,7 +8,6 @@ var	BD = require('../BD')
 var db = BD.mongodb();
 var producto_schema = require('../models/producto');
 var Producto = db.model('Producto', producto_schema);
-
 	
 exports.productCreate = function(req, res){
 	if(req.session.user.tipo == 'a'){
@@ -268,7 +267,40 @@ exports.productEditarDeleteImg = function(req, res){
 			id = sanitize(req.body.id).trim();
 			id = sanitize(id).xss();
 			id = sanitize(id).entityDecode();
-			console.log(id);
+			idProducto = id.split('.');
+			Producto.findById(idProducto[0], function(err, producto) {
+	 	  	if(err) res.send('1');
+	 	  	else{
+	 	  		if(producto==null)	res.send('1');		
+	 	  		else{
+	 	  			fs.unlink("public/images/products/"+id+".micro.jpg", function() {
+							if (err) res.send('1');      
+							else {
+								fs.unlink("public/images/products/"+id+".min.jpg", function() {
+									if (err) res.send('1');      
+									else {
+										fs.unlink("public/images/products/"+id+".big.jpg", function() {
+											if (err) res.send('1');      
+											else {
+												fs.unlink("public/images/products/"+id+".jpg", function() {
+													if (err) res.send('1');      
+													else {
+														producto.images.remove(id);
+									 	  			producto.save(function(err,room) {
+												    	if (err) res.send('1');
+														  else	res.send('/#product/editar/'+room.id);	
+														});
+													}
+												});
+											}
+										});
+									}
+								});	
+							}
+						});
+	 	  		}
+	 	  	}
+	 	  });
 		}
 		else
 		 res.send('1');		

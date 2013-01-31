@@ -13,7 +13,7 @@ $(document).ready(function(){
 		'product/delete_img/:id': function(id){
 			picIzq();
 			hideUserPanel();
-			ajaxNormal("/admin/product/delete_img","id="+id);
+			ajaxNormal("/admin/product/delete_img","id="+id,true);
 		},
 		'product': function(){
 			picIzq();
