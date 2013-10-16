@@ -28,12 +28,12 @@ app.configure(function(){
 	app.use(express.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
-  //app.use(gzippo.staticGzip(__dirname + '/public'));
 });
 
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
+
 app.get('/', routes.index);
 app.post('/disponibilidad', disponibilidad.disponibilidad);
 app.post('/registrar', user.registrar);
@@ -62,5 +62,5 @@ app.post('/productos', alluser.productos);
 app.post('/product/view', alluser.product);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+  console.log("Express server listening on port " + app.get('port') + " in " + app.settings.env + " mode");
 });
