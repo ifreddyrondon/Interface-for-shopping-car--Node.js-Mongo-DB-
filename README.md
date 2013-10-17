@@ -1,8 +1,7 @@
 # Interface-for-shopping-car-node-and-mongo
 ### [Interface-for-shopping-car-node-and-mongo](http://spantons.github.io/Interface-for-shopping-car-node-and-mongo)
 
-### Descripción
-  Shopping Car, Carrito de compras con registro de usuario en mysql, hecho con Jade, node.js y mongoDB
+Shopping Car, Carrito de compras con registro de usuario en mysql, hecho con Jade, node.js y mongoDB
 
 ## ¿Qué es esto?
   Es mi primera aproximación creando aplicaciones web en [Node.js](nodejs.org/) utilizando como base de datos [MongoDB](www.mongodb.org/‎), enfocada en un [ShoppingCar](es.wikipedia.org/wiki/Tienda_web)
