@@ -16,3 +16,8 @@ Debes tener instalado [Node.js](http://nodejs.org/), [Mysql](http://www.mysql.co
  4. Cargar la base de datos dentro de la carpeta kioskoBDBackup/kiosco.sql en tu manejador
  5. Corres tu aplicación: `node app.js`
  6. Abres en tu navegador [localhost:3000](http://localhost:3000)
+
+## ScreenShots
+![compra](https://dl.dropbox.com/s/nm4xn51ox5kqzsn/Captura%20de%20pantalla%202013-10-23%20a%20la%28s%29%2022.38.20.png)
+
+![login](https://dl.dropbox.com/s/8yq27b147fwqkyc/Captura%20de%20pantalla%202013-10-23%20a%20la%28s%29%2022.39.06.png)
