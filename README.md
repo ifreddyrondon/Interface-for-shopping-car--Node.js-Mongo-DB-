@@ -21,3 +21,10 @@ Debes tener instalado [Node.js](http://nodejs.org/), [Mysql](http://www.mysql.co
 ![compra](https://dl.dropbox.com/s/nm4xn51ox5kqzsn/Captura%20de%20pantalla%202013-10-23%20a%20la%28s%29%2022.38.20.png)
 
 ![login](https://dl.dropbox.com/s/8yq27b147fwqkyc/Captura%20de%20pantalla%202013-10-23%20a%20la%28s%29%2022.39.06.png)
+
+![user](https://dl.dropbox.com/s/3lcn9vs3e5bvfy1/Captura%20de%20pantalla%202013-10-23%20a%20la%28s%29%2023.46.30.png)
+
+![productos](https://dl.dropbox.com/s/sq2v8m8nppyh29e/Captura%20de%20pantalla%202013-10-23%20a%20la%28s%29%2023.47.03.png)
+
+![producto](https://dl.dropbox.com/s/2n1618wyyei05ep/Captura%20de%20pantalla%202013-10-23%20a%20la%28s%29%2023.47.12.png)
+
